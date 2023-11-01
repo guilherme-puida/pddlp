@@ -30,6 +30,42 @@
  */
 #include "pddlp.h"
 
+#include <string.h>
+
+static int
+is_at_end(struct pddlp_tokenizer *t)
+{
+	return *t->current == 0;
+}
+
+static struct pddlp_token
+make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
+{
+	struct pddlp_token token;
+
+	token.token_type = token_type;
+	token.start = t->start;
+	token.length = t->current - t->start;
+	token.line = t->line;
+	token.column = t->column;
+
+	return token;
+}
+
+static struct pddlp_token
+error_token(struct pddlp_tokenizer *t, const char *message)
+{
+	struct pddlp_token token;
+
+	token.token_type = PDDLP_TOKEN_ERROR;
+	token.start = message;
+	token.length = strlen(message);
+	token.line = t->line;
+	token.column = t->column;
+
+	return token;
+}
+
 void
 pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 {
@@ -42,6 +78,10 @@ pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 struct pddlp_token
 pddlp_scan_token(struct pddlp_tokenizer *t)
 {
-	struct pddlp_token token;
-	return token;
+	t->start = t->current;
+
+	if (is_at_end(t))
+		return make_token(t, PDDLP_TOKEN_EOF);
+
+	return error_token(t, "unrecognized character");
 }
