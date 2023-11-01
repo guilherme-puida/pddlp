@@ -38,6 +38,14 @@ is_at_end(struct pddlp_tokenizer *t)
 	return *t->current == 0;
 }
 
+static char
+advance(struct pddlp_tokenizer *t)
+{
+	t->current++;
+	t->column++;
+	return t->current[-1];
+}
+
 static struct pddlp_token
 make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
 {
@@ -82,6 +90,17 @@ pddlp_scan_token(struct pddlp_tokenizer *t)
 
 	if (is_at_end(t))
 		return make_token(t, PDDLP_TOKEN_EOF);
+
+	char c = advance(t);
+
+	switch(c) {
+		case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
+		case ')': return make_token(t, PDDLP_TOKEN_RPAREN);
+		case '+': return make_token(t, PDDLP_TOKEN_PLUS);
+		case '-': return make_token(t, PDDLP_TOKEN_MINUS);
+		case '*': return make_token(t, PDDLP_TOKEN_STAR);
+		case '/': return make_token(t, PDDLP_TOKEN_SLASH);
+	}
 
 	return error_token(t, "unrecognized character");
 }
