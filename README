@@ -1,0 +1,24 @@
+= PDDLP =
+
+PDDLP aims to be a simple, but fast and correct, PDDL tokenizer and parser. It
+is written in pure C99 without any external dependencies, and should compile
+cleanly under any POSIX-compatible system.
+
+The entire implementation is contained in pddlp.c and pddlp.h. The other files
+in this repository are just used for testing and building.
+
+The code is licensed under the BSD 3-Clause License. Please see LICENSE for the
+entire text.
+
+This project is in the initial stages of development.
+
+== Testing ==
+
+There is a basic test-suite implemented. To run the tests:
+
+  make test
+
+== References ==
+
+"Daniel L, Kovacs. BNF definition of PDDLP 3.1. 2011"
+"Daniel L, Kovacs. Discussion of the original PDDL definitions and thei correction. 2011"
