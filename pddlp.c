@@ -49,6 +49,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_NAME] = "PDDLP_TOKEN_NAME",
 
 	[PDDLP_TOKEN_DECREASE] = "PDDLP_TOKEN_DECREASE",
+	[PDDLP_TOKEN_DEFINE] = "PDDLP_TOKEN_DEFINE",
 	[PDDLP_TOKEN_DOMAIN] = "PDDLP_TOKEN_DOMAIN",
 	[PDDLP_TOKEN_EITHER] = "PDDLP_TOKEN_EITHER",
 	[PDDLP_TOKEN_END] = "PDDLP_TOKEN_END",
@@ -212,7 +213,7 @@ name_type(struct pddlp_tokenizer *t)
 	// at end
 	// at-most-once
 	// OK decrease
-	// define
+	// OK define
 	// OK domain
 	// OK either
 	// OK end
@@ -248,6 +249,7 @@ name_type(struct pddlp_tokenizer *t)
 				if (t->current - t->start > 2) {
 					switch(t->start[2]) {
 					case 'c': return check_name(t, 3, 5, "rease", PDDLP_TOKEN_DECREASE);
+					case 'f': return check_name(t, 3, 3, "ine", PDDLP_TOKEN_DEFINE);
 					}
 				}
 				break;
