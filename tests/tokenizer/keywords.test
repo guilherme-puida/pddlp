@@ -4,5 +4,6 @@ exists
 end
 forall
 not
+imply
 preference
 total-time
