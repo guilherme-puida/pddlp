@@ -207,7 +207,7 @@ name_type(struct pddlp_tokenizer *t)
 	// and
 	// assign
 	// at
-	// at end (i don't know if this is correct, a hyphen would be more usual)
+	// at end
 	// at-most-once
 	// OK decrease
 	// OK either
