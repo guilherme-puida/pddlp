@@ -33,6 +33,12 @@
 #include <string.h>
 
 static int
+is_digit(char c)
+{
+	return '0' <= c && c <= '9';
+}
+
+static int
 is_at_end(struct pddlp_tokenizer *t)
 {
 	return *t->current == 0;
@@ -50,6 +56,12 @@ static char
 peek(struct pddlp_tokenizer *t)
 {
 	return *t->current;
+}
+
+static char
+peek_next(struct pddlp_tokenizer *t)
+{
+	return is_at_end(t) ? 0 : t->current[1];
 }
 
 static int
@@ -118,6 +130,21 @@ error_token(struct pddlp_tokenizer *t, const char *message)
 	return token;
 }
 
+static struct pddlp_token
+tokenize_number(struct pddlp_tokenizer *t)
+{
+	while (is_digit(peek(t)))
+		advance(t);
+
+	if (peek(t) == '.' && is_digit(peek_next(t))) {
+		advance(t);
+		while (is_digit(peek(t)))
+			advance(t);
+	}
+
+	return make_token(t, PDDLP_TOKEN_NUMBER);
+}
+
 void
 pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 {
@@ -137,6 +164,9 @@ pddlp_scan_token(struct pddlp_tokenizer *t)
 		return make_token(t, PDDLP_TOKEN_EOF);
 
 	char c = advance(t);
+
+	if (is_digit(c))
+		return tokenize_number(t);
 
 	switch(c) {
 	case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
