@@ -39,6 +39,18 @@ is_digit(char c)
 }
 
 static int
+is_letter(char c)
+{
+	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+}
+
+static int
+is_any_char(char c)
+{
+	return is_digit(c) || is_letter(c) || c == '-' || c == '_';
+}
+
+static int
 is_at_end(struct pddlp_tokenizer *t)
 {
 	return *t->current == 0;
@@ -133,6 +145,15 @@ error_token(struct pddlp_tokenizer *t, const char *message)
 	return token;
 }
 
+static enum pddlp_token_type
+name_type(struct pddlp_tokenizer *t)
+{
+	// TODO(puida): `t` will be used to figure out what token_type
+	//              should be emitted.
+	(void) t;
+	return PDDLP_TOKEN_NAME;
+}
+
 static struct pddlp_token
 tokenize_number(struct pddlp_tokenizer *t)
 {
@@ -146,6 +167,14 @@ tokenize_number(struct pddlp_tokenizer *t)
 	}
 
 	return make_token(t, PDDLP_TOKEN_NUMBER);
+}
+
+static struct pddlp_token
+tokenize_name(struct pddlp_tokenizer *t)
+{
+	while (is_any_char(peek(t))) advance(t);
+
+	return make_token(t, name_type(t));
 }
 
 void
@@ -168,8 +197,8 @@ pddlp_scan_token(struct pddlp_tokenizer *t)
 
 	char c = advance(t);
 
-	if (is_digit(c))
-		return tokenize_number(t);
+	if (is_digit(c)) return tokenize_number(t);
+	if (is_letter(c)) return tokenize_name(t);
 
 	switch(c) {
 	case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
