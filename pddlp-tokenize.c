@@ -82,8 +82,9 @@ main(int argc, char **argv)
 	long file_size = ftell(file);
 	rewind(file);
 
-	char *source = malloc(sizeof(*source) * file_size);
-	fread(source, file_size, 1, file);
+	char *source = malloc(sizeof(*source) * file_size + 1);
+	long read_amount = fread(source, 1, file_size, file);
+	source[read_amount] = 0;
 	fclose(file);
 
 	int error_count = print_all_tokens(source);
