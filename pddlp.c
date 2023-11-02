@@ -210,6 +210,8 @@ name_type(struct pddlp_tokenizer *t)
 	// at end
 	// at-most-once
 	// OK decrease
+	// define
+	// domain
 	// OK either
 	// OK end
 	// OK exists
@@ -226,6 +228,7 @@ name_type(struct pddlp_tokenizer *t)
 	// OK or
 	// OK over
 	// OK preference
+	// problem
 	// scale-up
 	// sometime
 	// sometime-after
