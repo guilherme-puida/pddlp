@@ -51,6 +51,8 @@ enum pddlp_token_type {
 	PDDLP_TOKEN_ERROR,
 };
 
+extern const char *pddlp_token_type_names[];
+
 struct pddlp_token {
 	enum pddlp_token_type token_type;
 	const char *start;
