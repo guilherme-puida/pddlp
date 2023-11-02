@@ -10,5 +10,6 @@ maximize
 minimize
 not
 object
+or
 preference
 total-time

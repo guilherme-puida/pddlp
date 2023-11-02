@@ -60,6 +60,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_MINIMIZE] = "PDDLP_TOKEN_MINIMIZE",
 	[PDDLP_TOKEN_NOT] = "PDDLP_TOKEN_NOT",
 	[PDDLP_TOKEN_OBJECT] = "PDDLP_TOKEN_OBJECT",
+	[PDDLP_TOKEN_OR] = "PDDLP_TOKEN_OR",
 	[PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
 	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
 
@@ -218,7 +219,7 @@ name_type(struct pddlp_tokenizer *t)
 	// OK minimize
 	// OK not
 	// OK object
-	// or
+	// OK or
 	// over
 	// OK preference
 	// scale-up
@@ -263,12 +264,14 @@ name_type(struct pddlp_tokenizer *t)
 		if (t->current - t->start > 1) {
 			switch (t->start[1]) {
 			case 'b': return check_name(t, 2, 4, "ject", PDDLP_TOKEN_OBJECT);
+			case 'r': return check_name(t, 2, 0, "", PDDLP_TOKEN_OR);
 			}
 		}
 		break;
 	case 'p': return check_name(t, 1, 9, "reference", PDDLP_TOKEN_PREFERENCE);
 	case 't': return check_name(t, 1, 9, "otal-time", PDDLP_TOKEN_TOTAL_TIME);
 	}
+
 	return PDDLP_TOKEN_NAME;
 }
 
