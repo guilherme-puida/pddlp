@@ -6,6 +6,7 @@ end
 exists
 forall
 hold-after
+hold-during
 imply
 increase
 is-violated

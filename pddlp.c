@@ -56,6 +56,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_EXISTS] = "PDDLP_TOKEN_EXISTS",
 	[PDDLP_TOKEN_FORALL] = "PDDLP_TOKEN_FORALL",
 	[PDDLP_TOKEN_HOLD_AFTER] = "PDDLP_TOKEN_HOLD_AFTER",
+	[PDDLP_TOKEN_HOLD_DURING] = "PDDLP_TOKEN_HOLD_DURING",
 	[PDDLP_TOKEN_IMPLY] = "PDDLP_TOKEN_IMPLY",
 	[PDDLP_TOKEN_INCREASE] = "PDDLP_TOKEN_INCREASE",
 	[PDDLP_TOKEN_IS_VIOLATED] = "PDDLP_TOKEN_IS_VIOLATED",
@@ -221,7 +222,7 @@ name_type(struct pddlp_tokenizer *t)
 	// OK exists
 	// OK forall
 	// OK hold-after
-	// hold-during
+	// OK hold-during
 	// OK imply
 	// OK increase
 	// OK is-violated
@@ -272,6 +273,7 @@ name_type(struct pddlp_tokenizer *t)
 		if (t->current - t->start > 5 && t->start[1] == 'o' && t->start[2] == 'l' && t->start[3] == 'd' && t->start[4] == '-') {
 			switch(t->start[5]) {
 			case 'a': return check_name(t, 6, 4, "fter", PDDLP_TOKEN_HOLD_AFTER);
+			case 'd': return check_name(t, 6, 5, "uring", PDDLP_TOKEN_HOLD_DURING);
 			}
 		}
 		break;
