@@ -48,6 +48,8 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_NUMBER] = "PDDLP_TOKEN_NUMBER",
 	[PDDLP_TOKEN_NAME] = "PDDLP_TOKEN_NAME",
 
+	[PDDLP_TOKEN_DECREASE] = "PDDLP_TOKEN_DECREASE",
+
 	[PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
 	[PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
 };
@@ -166,11 +168,57 @@ error_token(struct pddlp_tokenizer *t, const char *message)
 }
 
 static enum pddlp_token_type
+check_name(struct pddlp_tokenizer *t, int start, int length,
+	   const char *rest, enum pddlp_token_type token_type)
+{
+	if (t->current - t->start == start + length &&
+	    memcmp(t->start + start, rest, length) == 0) {
+		return token_type;
+	}
+
+	return PDDLP_TOKEN_NAME;
+}
+
+static enum pddlp_token_type
 name_type(struct pddlp_tokenizer *t)
 {
-	// TODO(puida): `t` will be used to figure out what token_type
-	//              should be emitted.
-	(void) t;
+	// TODO(puida): list of language keywords to implement:
+	// all
+	// always
+	// always-within
+	// and
+	// assign
+	// at
+	// at end (i don't know if this is correct, a hyphen would be more usual)
+	// at-most-once
+	// OK decrease
+	// either
+	// end
+	// exists
+	// forall
+	// hold-after
+	// hold-during
+	// imply
+	// increase
+	// is-violated
+	// maximize
+	// minimize
+	// not
+	// object
+	// or
+	// over
+	// preference
+	// scale-up
+	// sometime
+	// sometime-after
+	// sometime-before
+	// start
+	// total-time
+	// when
+	// within
+	switch (t->start[0]) {
+	case 'd': return check_name(t, 1, 7, "ecrease", PDDLP_TOKEN_DECREASE);
+	}
 	return PDDLP_TOKEN_NAME;
 }
 
