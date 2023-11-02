@@ -69,6 +69,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
 	[PDDLP_TOKEN_PROBLEM] = "PDDLP_TOKEN_PROBLEM",
 	[PDDLP_TOKEN_SCALE_UP] = "PDDLP_TOKEN_SCALE_UP",
+	[PDDLP_TOKEN_START] = "PDDLP_TOKEN_START",
 	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
 	[PDDLP_TOKEN_UNDEFINED] = "PDDLP_TOKEN_UNDEFINED",
 	[PDDLP_TOKEN_WHEN] = "PDDLP_TOKEN_WHEN",
@@ -218,7 +219,6 @@ name_type(struct pddlp_tokenizer *t)
 	// sometime
 	// sometime-after
 	// sometime-before
-	// start
 	switch (t->start[0]) {
 	case 'd':
 		if (t->current - t->start > 1) {
@@ -292,6 +292,7 @@ name_type(struct pddlp_tokenizer *t)
 		if (t->current - t->start > 1) {
 			switch (t->start[1]) {
 			case 'c': return check_name(t, 2, 6, "ale-up", PDDLP_TOKEN_SCALE_UP);
+			case 't': return check_name(t, 2, 3, "art", PDDLP_TOKEN_START);
 			}
 		}
 		break;
