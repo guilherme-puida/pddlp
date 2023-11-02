@@ -120,12 +120,12 @@ pddlp_scan_token(struct pddlp_tokenizer *t)
 	char c = advance(t);
 
 	switch(c) {
-		case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
-		case ')': return make_token(t, PDDLP_TOKEN_RPAREN);
-		case '+': return make_token(t, PDDLP_TOKEN_PLUS);
-		case '-': return make_token(t, PDDLP_TOKEN_MINUS);
-		case '*': return make_token(t, PDDLP_TOKEN_STAR);
-		case '/': return make_token(t, PDDLP_TOKEN_SLASH);
+	case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
+	case ')': return make_token(t, PDDLP_TOKEN_RPAREN);
+	case '+': return make_token(t, PDDLP_TOKEN_PLUS);
+	case '-': return make_token(t, PDDLP_TOKEN_MINUS);
+	case '*': return make_token(t, PDDLP_TOKEN_STAR);
+	case '/': return make_token(t, PDDLP_TOKEN_SLASH);
 	}
 
 	return error_token(t, "unrecognized character");
