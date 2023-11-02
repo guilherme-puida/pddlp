@@ -46,6 +46,31 @@ advance(struct pddlp_tokenizer *t)
 	return t->current[-1];
 }
 
+static char
+peek(struct pddlp_tokenizer *t)
+{
+	return *t->current;
+}
+
+static void
+skip_whitespace(struct pddlp_tokenizer *t)
+{
+	for (;;) {
+		char c = peek(t);
+
+		if (c == ' ' || c == '\t' || c == '\r') {
+			advance(t);
+		} else if (c == '\n') {
+			t->line++;
+			t->column = 0;
+			advance(t);
+		} else {
+			return;
+		}
+
+	}
+}
+
 static struct pddlp_token
 make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
 {
@@ -86,6 +111,7 @@ pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 struct pddlp_token
 pddlp_scan_token(struct pddlp_tokenizer *t)
 {
+	skip_whitespace(t);
 	t->start = t->current;
 
 	if (is_at_end(t))
