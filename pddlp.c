@@ -277,7 +277,13 @@ name_type(struct pddlp_tokenizer *t)
 			}
 		}
 		break;
-	case 'p': return check_name(t, 1, 9, "reference", PDDLP_TOKEN_PREFERENCE);
+	case 'p':
+		if (t->current - t->start > 2 && t->start[1] == 'r') {
+			switch (t->start[2]) {
+			case 'e': return check_name(t, 3, 7, "ference", PDDLP_TOKEN_PREFERENCE);
+			}
+		}
+		break;
 	case 't': return check_name(t, 1, 9, "otal-time", PDDLP_TOKEN_TOTAL_TIME);
 	case 'u': return check_name(t, 1, 8, "ndefined", PDDLP_TOKEN_UNDEFINED);
 	case 'w':
