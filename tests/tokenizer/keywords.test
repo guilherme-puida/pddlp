@@ -9,5 +9,6 @@ is-violated
 maximize
 minimize
 not
+object
 preference
 total-time
