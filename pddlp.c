@@ -66,6 +66,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
 	[PDDLP_TOKEN_UNDEFINED] = "PDDLP_TOKEN_UNDEFINED",
 	[PDDLP_TOKEN_WHEN] = "PDDLP_TOKEN_WHEN",
+	[PDDLP_TOKEN_WITHIN] = "PDDLP_TOKEN_WITHIN",
 
 	[PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
 	[PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -233,7 +234,7 @@ name_type(struct pddlp_tokenizer *t)
 	// OK total-time
 	// OK undefined
 	// OK when
-	// within
+	// OK within
 	switch (t->start[0]) {
 	case 'd': return check_name(t, 1, 7, "ecrease", PDDLP_TOKEN_DECREASE);
 	case 'e':
@@ -280,6 +281,7 @@ name_type(struct pddlp_tokenizer *t)
 		if (t->current - t->start > 1) {
 			switch (t->start[1]) {
 			case 'h': return check_name(t, 2, 2, "en", PDDLP_TOKEN_WHEN);
+			case 'i': return check_name(t, 2, 4, "thin", PDDLP_TOKEN_WITHIN);
 			}
 		}
 		break;
