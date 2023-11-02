@@ -57,6 +57,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_INCREASE] = "PDDLP_TOKEN_INCREASE",
 	[PDDLP_TOKEN_IS_VIOLATED] = "PDDLP_TOKEN_IS_VIOLATED",
 	[PDDLP_TOKEN_MAXIMIZE] = "PDDLP_TOKEN_MAXIMIZE",
+	[PDDLP_TOKEN_MINIMIZE] = "PDDLP_TOKEN_MINIMIZE",
 	[PDDLP_TOKEN_NOT] = "PDDLP_TOKEN_NOT",
 	[PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
 	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
@@ -213,7 +214,7 @@ name_type(struct pddlp_tokenizer *t)
 	// OK increase
 	// OK is-violated
 	// OK maximize
-	// minimize
+	// OK minimize
 	// OK not
 	// object
 	// or
@@ -252,6 +253,7 @@ name_type(struct pddlp_tokenizer *t)
 		if (t->current - t->start > 1) {
 			switch (t->start[1]) {
 			case 'a': return check_name(t, 2, 6, "ximize", PDDLP_TOKEN_MAXIMIZE);
+			case 'i': return check_name(t, 2, 6, "nimize", PDDLP_TOKEN_MINIMIZE);
 			}
 		}
 		break;

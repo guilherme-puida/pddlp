@@ -8,5 +8,6 @@ increase
 is-violated
 not
 maximize
+minimize
 preference
 total-time
