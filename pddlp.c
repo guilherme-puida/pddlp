@@ -244,7 +244,13 @@ name_type(struct pddlp_tokenizer *t)
 	case 'd':
 		if (t->current - t->start > 1) {
 			switch (t->start[1]) {
-			case 'e': return check_name(t, 2, 6, "crease", PDDLP_TOKEN_DECREASE);
+			case 'e':
+				if (t->current - t->start > 2) {
+					switch(t->start[2]) {
+					case 'c': return check_name(t, 3, 5, "rease", PDDLP_TOKEN_DECREASE);
+					}
+				}
+				break;
 			case 'o': return check_name(t, 2, 4, "main", PDDLP_TOKEN_DOMAIN);
 			}
 		}
