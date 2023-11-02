@@ -214,35 +214,11 @@ name_type(struct pddlp_tokenizer *t)
 	// at
 	// at end
 	// at-most-once
-	// OK decrease
-	// OK define
-	// OK domain
-	// OK either
-	// OK end
-	// OK exists
-	// OK forall
-	// OK hold-after
-	// OK hold-during
-	// OK imply
-	// OK increase
-	// OK is-violated
-	// OK maximize
-	// OK minimize
-	// OK not
-	// OK object
-	// OK or
-	// OK over
-	// OK preference
-	// OK problem
 	// scale-up
 	// sometime
 	// sometime-after
 	// sometime-before
 	// start
-	// OK total-time
-	// OK undefined
-	// OK when
-	// OK within
 	switch (t->start[0]) {
 	case 'd':
 		if (t->current - t->start > 1) {
