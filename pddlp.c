@@ -240,7 +240,13 @@ name_type(struct pddlp_tokenizer *t)
 	// OK when
 	// OK within
 	switch (t->start[0]) {
-	case 'd': return check_name(t, 1, 7, "ecrease", PDDLP_TOKEN_DECREASE);
+	case 'd':
+		if (t->current - t->start > 1) {
+			switch (t->start[1]) {
+			case 'e': return check_name(t, 2, 6, "crease", PDDLP_TOKEN_DECREASE);
+			}
+		}
+		break;
 	case 'e':
 		if (t->current - t->start > 1) {
 			switch (t->start[1]) {
