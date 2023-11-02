@@ -90,7 +90,7 @@ make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
 	token.start = t->start;
 	token.length = t->current - t->start;
 	token.line = t->line;
-	token.column = t->column;
+	token.column = t->column - token.length;
 
 	return token;
 }
@@ -124,7 +124,7 @@ pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 	t->start = source;
 	t->current = source;
 	t->line = 1;
-	t->column = 0;
+	t->column = 1;
 }
 
 struct pddlp_token
