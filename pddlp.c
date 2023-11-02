@@ -68,6 +68,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_OVER] = "PDDLP_TOKEN_OVER",
 	[PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
 	[PDDLP_TOKEN_PROBLEM] = "PDDLP_TOKEN_PROBLEM",
+	[PDDLP_TOKEN_SCALE_UP] = "PDDLP_TOKEN_SCALE_UP",
 	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
 	[PDDLP_TOKEN_UNDEFINED] = "PDDLP_TOKEN_UNDEFINED",
 	[PDDLP_TOKEN_WHEN] = "PDDLP_TOKEN_WHEN",
@@ -214,7 +215,6 @@ name_type(struct pddlp_tokenizer *t)
 	// at
 	// at end
 	// at-most-once
-	// scale-up
 	// sometime
 	// sometime-after
 	// sometime-before
@@ -285,6 +285,13 @@ name_type(struct pddlp_tokenizer *t)
 			switch (t->start[2]) {
 			case 'e': return check_name(t, 3, 7, "ference", PDDLP_TOKEN_PREFERENCE);
 			case 'o': return check_name(t, 3, 4, "blem", PDDLP_TOKEN_PROBLEM);
+			}
+		}
+		break;
+	case 's':
+		if (t->current - t->start > 1) {
+			switch (t->start[1]) {
+			case 'c': return check_name(t, 2, 6, "ale-up", PDDLP_TOKEN_SCALE_UP);
 			}
 		}
 		break;
