@@ -229,6 +229,7 @@ name_type(struct pddlp_tokenizer *t)
 	// sometime-before
 	// start
 	// OK total-time
+	// undefined
 	// when
 	// within
 	switch (t->start[0]) {
