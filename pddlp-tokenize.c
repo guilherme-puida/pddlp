@@ -53,8 +53,9 @@ print_all_tokens(const char *source)
 		if (token_type == PDDLP_TOKEN_ERROR)
 			error_count++;
 
-		printf("[%02d:%02d] %.*s\n",
+		printf("[%02d:%02d] %s %.*s\n",
 			token.line, token.column,
+			pddlp_token_type_names[token_type],
 			token.length, token.start);
 	}
 
