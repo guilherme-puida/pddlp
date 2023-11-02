@@ -61,6 +61,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_NOT] = "PDDLP_TOKEN_NOT",
 	[PDDLP_TOKEN_OBJECT] = "PDDLP_TOKEN_OBJECT",
 	[PDDLP_TOKEN_OR] = "PDDLP_TOKEN_OR",
+	[PDDLP_TOKEN_OVER] = "PDDLP_TOKEN_OVER",
 	[PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
 	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
 
@@ -220,7 +221,7 @@ name_type(struct pddlp_tokenizer *t)
 	// OK not
 	// OK object
 	// OK or
-	// over
+	// OK over
 	// OK preference
 	// scale-up
 	// sometime
@@ -265,6 +266,7 @@ name_type(struct pddlp_tokenizer *t)
 			switch (t->start[1]) {
 			case 'b': return check_name(t, 2, 4, "ject", PDDLP_TOKEN_OBJECT);
 			case 'r': return check_name(t, 2, 0, "", PDDLP_TOKEN_OR);
+			case 'v': return check_name(t, 2, 2, "er", PDDLP_TOKEN_OVER);
 			}
 		}
 		break;
