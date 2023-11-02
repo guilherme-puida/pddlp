@@ -56,6 +56,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_IMPLY] = "PDDLP_TOKEN_IMPLY",
 	[PDDLP_TOKEN_INCREASE] = "PDDLP_TOKEN_INCREASE",
 	[PDDLP_TOKEN_IS_VIOLATED] = "PDDLP_TOKEN_IS_VIOLATED",
+	[PDDLP_TOKEN_MAXIMIZE] = "PDDLP_TOKEN_MAXIMIZE",
 	[PDDLP_TOKEN_NOT] = "PDDLP_TOKEN_NOT",
 	[PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
 	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
@@ -211,7 +212,7 @@ name_type(struct pddlp_tokenizer *t)
 	// OK imply
 	// OK increase
 	// OK is-violated
-	// maximize
+	// OK maximize
 	// minimize
 	// OK not
 	// object
@@ -244,6 +245,13 @@ name_type(struct pddlp_tokenizer *t)
 			case 'm': return check_name(t, 2, 3, "ply", PDDLP_TOKEN_IMPLY);
 			case 'n': return check_name(t, 2, 6, "crease", PDDLP_TOKEN_INCREASE);
 			case 's': return check_name(t, 2, 9, "-violated", PDDLP_TOKEN_IS_VIOLATED);
+			}
+		}
+		break;
+	case 'm':
+		if (t->current - t->start > 1) {
+			switch (t->start[1]) {
+			case 'a': return check_name(t, 2, 6, "ximize", PDDLP_TOKEN_MAXIMIZE);
 			}
 		}
 		break;
