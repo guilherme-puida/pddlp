@@ -86,6 +86,9 @@ skip_whitespace(struct pddlp_tokenizer *t)
 			t->line++;
 			t->column = 0;
 			advance(t);
+		} else if (c == ';') {
+			while (peek(t) != '\n' && !is_at_end(t))
+				advance(t);
 		} else {
 			return;
 		}
