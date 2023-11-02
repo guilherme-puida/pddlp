@@ -5,6 +5,7 @@ either
 end
 exists
 forall
+hold-after
 imply
 increase
 is-violated
