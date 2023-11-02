@@ -49,6 +49,7 @@ const char *pddlp_token_type_names[] = {
 	[PDDLP_TOKEN_NAME] = "PDDLP_TOKEN_NAME",
 
 	[PDDLP_TOKEN_DECREASE] = "PDDLP_TOKEN_DECREASE",
+	[PDDLP_TOKEN_FORALL] = "PDDLP_TOKEN_FORALL",
 
 	[PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
 	[PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -195,7 +196,7 @@ name_type(struct pddlp_tokenizer *t)
 	// either
 	// end
 	// exists
-	// forall
+	// OK forall
 	// hold-after
 	// hold-during
 	// imply
@@ -218,6 +219,7 @@ name_type(struct pddlp_tokenizer *t)
 	// within
 	switch (t->start[0]) {
 	case 'd': return check_name(t, 1, 7, "ecrease", PDDLP_TOKEN_DECREASE);
+	case 'f': return check_name(t, 1, 5, "orall", PDDLP_TOKEN_FORALL);
 	}
 	return PDDLP_TOKEN_NAME;
 }
