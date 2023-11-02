@@ -16,5 +16,10 @@ foreach test $tests {
     } else {
       puts "= $test FAILED"
     }
+  } else {
+    set out [open $expected w]
+    puts -nonewline $out $actual
+    close $out
+    puts "= $test CREATED"
   }
 }
