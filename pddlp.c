@@ -33,340 +33,342 @@
 #include <string.h>
 
 const char *pddlp_token_type_names[] = {
-	[PDDLP_TOKEN_LPAREN] = "PDDLP_TOKEN_LPAREN",
-	[PDDLP_TOKEN_RPAREN] = "PDDLP_TOKEN_RPAREN",
-	[PDDLP_TOKEN_PLUS] = "PDDLP_TOKEN_PLUS",
-	[PDDLP_TOKEN_MINUS] = "PDDLP_TOKEN_MINUS",
-	[PDDLP_TOKEN_STAR] = "PDDLP_TOKEN_STAR",
-	[PDDLP_TOKEN_SLASH] = "PDDLP_TOKEN_SLASH",
+    [PDDLP_TOKEN_LPAREN] = "PDDLP_TOKEN_LPAREN",
+    [PDDLP_TOKEN_RPAREN] = "PDDLP_TOKEN_RPAREN",
+    [PDDLP_TOKEN_PLUS] = "PDDLP_TOKEN_PLUS",
+    [PDDLP_TOKEN_MINUS] = "PDDLP_TOKEN_MINUS",
+    [PDDLP_TOKEN_STAR] = "PDDLP_TOKEN_STAR",
+    [PDDLP_TOKEN_SLASH] = "PDDLP_TOKEN_SLASH",
 
-	[PDDLP_TOKEN_LT] = "PDDLP_TOKEN_LT",
-	[PDDLP_TOKEN_LTE] = "PDDLP_TOKEN_LTE",
-	[PDDLP_TOKEN_GT] = "PDDLP_TOKEN_GT",
-	[PDDLP_TOKEN_GTE] = "PDDLP_TOKEN_GTE",
+    [PDDLP_TOKEN_LT] = "PDDLP_TOKEN_LT",
+    [PDDLP_TOKEN_LTE] = "PDDLP_TOKEN_LTE",
+    [PDDLP_TOKEN_GT] = "PDDLP_TOKEN_GT",
+    [PDDLP_TOKEN_GTE] = "PDDLP_TOKEN_GTE",
 
-	[PDDLP_TOKEN_NUMBER] = "PDDLP_TOKEN_NUMBER",
-	[PDDLP_TOKEN_NAME] = "PDDLP_TOKEN_NAME",
+    [PDDLP_TOKEN_NUMBER] = "PDDLP_TOKEN_NUMBER",
+    [PDDLP_TOKEN_NAME] = "PDDLP_TOKEN_NAME",
 
-	[PDDLP_TOKEN_DECREASE] = "PDDLP_TOKEN_DECREASE",
-	[PDDLP_TOKEN_DEFINE] = "PDDLP_TOKEN_DEFINE",
-	[PDDLP_TOKEN_DOMAIN] = "PDDLP_TOKEN_DOMAIN",
-	[PDDLP_TOKEN_EITHER] = "PDDLP_TOKEN_EITHER",
-	[PDDLP_TOKEN_END] = "PDDLP_TOKEN_END",
-	[PDDLP_TOKEN_EXISTS] = "PDDLP_TOKEN_EXISTS",
-	[PDDLP_TOKEN_FORALL] = "PDDLP_TOKEN_FORALL",
-	[PDDLP_TOKEN_HOLD_AFTER] = "PDDLP_TOKEN_HOLD_AFTER",
-	[PDDLP_TOKEN_HOLD_DURING] = "PDDLP_TOKEN_HOLD_DURING",
-	[PDDLP_TOKEN_IMPLY] = "PDDLP_TOKEN_IMPLY",
-	[PDDLP_TOKEN_INCREASE] = "PDDLP_TOKEN_INCREASE",
-	[PDDLP_TOKEN_IS_VIOLATED] = "PDDLP_TOKEN_IS_VIOLATED",
-	[PDDLP_TOKEN_MAXIMIZE] = "PDDLP_TOKEN_MAXIMIZE",
-	[PDDLP_TOKEN_MINIMIZE] = "PDDLP_TOKEN_MINIMIZE",
-	[PDDLP_TOKEN_NOT] = "PDDLP_TOKEN_NOT",
-	[PDDLP_TOKEN_OBJECT] = "PDDLP_TOKEN_OBJECT",
-	[PDDLP_TOKEN_OR] = "PDDLP_TOKEN_OR",
-	[PDDLP_TOKEN_OVER] = "PDDLP_TOKEN_OVER",
-	[PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
-	[PDDLP_TOKEN_PROBLEM] = "PDDLP_TOKEN_PROBLEM",
-	[PDDLP_TOKEN_SCALE_UP] = "PDDLP_TOKEN_SCALE_UP",
-	[PDDLP_TOKEN_START] = "PDDLP_TOKEN_START",
-	[PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
-	[PDDLP_TOKEN_UNDEFINED] = "PDDLP_TOKEN_UNDEFINED",
-	[PDDLP_TOKEN_WHEN] = "PDDLP_TOKEN_WHEN",
-	[PDDLP_TOKEN_WITHIN] = "PDDLP_TOKEN_WITHIN",
+    [PDDLP_TOKEN_DECREASE] = "PDDLP_TOKEN_DECREASE",
+    [PDDLP_TOKEN_DEFINE] = "PDDLP_TOKEN_DEFINE",
+    [PDDLP_TOKEN_DOMAIN] = "PDDLP_TOKEN_DOMAIN",
+    [PDDLP_TOKEN_EITHER] = "PDDLP_TOKEN_EITHER",
+    [PDDLP_TOKEN_END] = "PDDLP_TOKEN_END",
+    [PDDLP_TOKEN_EXISTS] = "PDDLP_TOKEN_EXISTS",
+    [PDDLP_TOKEN_FORALL] = "PDDLP_TOKEN_FORALL",
+    [PDDLP_TOKEN_HOLD_AFTER] = "PDDLP_TOKEN_HOLD_AFTER",
+    [PDDLP_TOKEN_HOLD_DURING] = "PDDLP_TOKEN_HOLD_DURING",
+    [PDDLP_TOKEN_IMPLY] = "PDDLP_TOKEN_IMPLY",
+    [PDDLP_TOKEN_INCREASE] = "PDDLP_TOKEN_INCREASE",
+    [PDDLP_TOKEN_IS_VIOLATED] = "PDDLP_TOKEN_IS_VIOLATED",
+    [PDDLP_TOKEN_MAXIMIZE] = "PDDLP_TOKEN_MAXIMIZE",
+    [PDDLP_TOKEN_MINIMIZE] = "PDDLP_TOKEN_MINIMIZE",
+    [PDDLP_TOKEN_NOT] = "PDDLP_TOKEN_NOT",
+    [PDDLP_TOKEN_OBJECT] = "PDDLP_TOKEN_OBJECT",
+    [PDDLP_TOKEN_OR] = "PDDLP_TOKEN_OR",
+    [PDDLP_TOKEN_OVER] = "PDDLP_TOKEN_OVER",
+    [PDDLP_TOKEN_PREFERENCE] = "PDDLP_TOKEN_PREFERENCE",
+    [PDDLP_TOKEN_PROBLEM] = "PDDLP_TOKEN_PROBLEM",
+    [PDDLP_TOKEN_SCALE_UP] = "PDDLP_TOKEN_SCALE_UP",
+    [PDDLP_TOKEN_START] = "PDDLP_TOKEN_START",
+    [PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
+    [PDDLP_TOKEN_UNDEFINED] = "PDDLP_TOKEN_UNDEFINED",
+    [PDDLP_TOKEN_WHEN] = "PDDLP_TOKEN_WHEN",
+    [PDDLP_TOKEN_WITHIN] = "PDDLP_TOKEN_WITHIN",
 
-	[PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
-	[PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
+    [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
+    [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
 };
 
 static int
 is_digit(char c)
 {
-	return '0' <= c && c <= '9';
+    return '0' <= c && c <= '9';
 }
 
 static int
 is_letter(char c)
 {
-	return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
+    return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 }
 
 static int
 is_any_char(char c)
 {
-	return is_digit(c) || is_letter(c) || c == '-' || c == '_';
+    return is_digit(c) || is_letter(c) || c == '-' || c == '_';
 }
 
 static int
 is_at_end(struct pddlp_tokenizer *t)
 {
-	return *t->current == 0;
+    return *t->current == 0;
 }
 
 static char
 advance(struct pddlp_tokenizer *t)
 {
-	t->current++;
-	t->column++;
-	return t->current[-1];
+    t->current++;
+    t->column++;
+    return t->current[-1];
 }
 
 static char
 peek(struct pddlp_tokenizer *t)
 {
-	return *t->current;
+    return *t->current;
 }
 
 static char
 peek_next(struct pddlp_tokenizer *t)
 {
-	return is_at_end(t) ? 0 : t->current[1];
+    return is_at_end(t) ? 0 : t->current[1];
 }
 
 static int
 match(struct pddlp_tokenizer *t, char expected)
 {
-	if (is_at_end(t) || peek(t) != expected)
-		return 0;
+    if (is_at_end(t) || peek(t) != expected)
+        return 0;
 
-	advance(t);
-	return 1;
+    advance(t);
+    return 1;
 }
 
 static void
 skip_whitespace(struct pddlp_tokenizer *t)
 {
-	for (;;) {
-		char c = peek(t);
+    for (;;) {
+        char c = peek(t);
 
-		if (c == ' ' || c == '\t' || c == '\r') {
-			advance(t);
-		} else if (c == '\n') {
-			t->line++;
-			t->column = 0;
-			advance(t);
-		} else if (c == ';') {
-			while (peek(t) != '\n' && !is_at_end(t))
-				advance(t);
-		} else {
-			return;
-		}
+        if (c == ' ' || c == '\t' || c == '\r') {
+            advance(t);
+        } else if (c == '\n') {
+            t->line++;
+            t->column = 0;
+            advance(t);
+        } else if (c == ';') {
+            while (peek(t) != '\n' && !is_at_end(t))
+                advance(t);
+        } else {
+            return;
+        }
 
-	}
+    }
 }
 
 static struct pddlp_token
 make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
 {
-	struct pddlp_token token;
+    struct pddlp_token token;
 
-	token.token_type = token_type;
-	token.start = t->start;
-	token.length = t->current - t->start;
-	token.line = t->line;
-	token.column = t->column - token.length;
+    token.token_type = token_type;
+    token.start = t->start;
+    token.length = t->current - t->start;
+    token.line = t->line;
+    token.column = t->column - token.length;
 
-	return token;
+    return token;
 }
 
 static struct pddlp_token
-make_if_match(struct pddlp_tokenizer *t,
-	      char expected,
-	      enum pddlp_token_type if_match,
-	      enum pddlp_token_type if_not_match)
+make_if_match(
+    struct pddlp_tokenizer *t,
+    char expected,
+    enum pddlp_token_type if_match,
+    enum pddlp_token_type if_not_match)
 {
-	return make_token(t, match(t, expected) ? if_match : if_not_match);
+    return make_token(t, match(t, expected) ? if_match : if_not_match);
 }
 
 static struct pddlp_token
 error_token(struct pddlp_tokenizer *t, const char *message)
 {
-	struct pddlp_token token;
+    struct pddlp_token token;
 
-	token.token_type = PDDLP_TOKEN_ERROR;
-	token.start = message;
-	token.length = strlen(message);
-	token.line = t->line;
-	token.column = t->column;
+    token.token_type = PDDLP_TOKEN_ERROR;
+    token.start = message;
+    token.length = strlen(message);
+    token.line = t->line;
+    token.column = t->column;
 
-	return token;
+    return token;
 }
 
 static enum pddlp_token_type
 check_name(struct pddlp_tokenizer *t, int start, int length,
-	   const char *rest, enum pddlp_token_type token_type)
+       const char *rest, enum pddlp_token_type token_type)
 {
-	if (t->current - t->start == start + length &&
-	    memcmp(t->start + start, rest, length) == 0) {
-		return token_type;
-	}
+    if (t->current - t->start == start + length &&
+        memcmp(t->start + start, rest, length) == 0) {
+        return token_type;
+    }
 
-	return PDDLP_TOKEN_NAME;
+    return PDDLP_TOKEN_NAME;
 }
 
 static enum pddlp_token_type
 name_type(struct pddlp_tokenizer *t)
 {
-	// TODO(puida): list of language keywords to implement:
-	// all
-	// always
-	// always-within
-	// and
-	// assign
-	// at
-	// at end
-	// at-most-once
-	// sometime
-	// sometime-after
-	// sometime-before
-	switch (t->start[0]) {
-	case 'd':
-		if (t->current - t->start > 1) {
-			switch (t->start[1]) {
-			case 'e':
-				if (t->current - t->start > 2) {
-					switch(t->start[2]) {
-					case 'c': return check_name(t, 3, 5, "rease", PDDLP_TOKEN_DECREASE);
-					case 'f': return check_name(t, 3, 3, "ine", PDDLP_TOKEN_DEFINE);
-					}
-				}
-				break;
-			case 'o': return check_name(t, 2, 4, "main", PDDLP_TOKEN_DOMAIN);
-			}
-		}
-		break;
-	case 'e':
-		if (t->current - t->start > 1) {
-			switch (t->start[1]) {
-			case 'i': return check_name(t, 2, 4, "ther", PDDLP_TOKEN_EITHER);
-			case 'n': return check_name(t, 2, 1, "d", PDDLP_TOKEN_END);
-			case 'x': return check_name(t, 2, 4, "ists", PDDLP_TOKEN_EXISTS);
-			}
-		}
-		break;
-	case 'f': return check_name(t, 1, 5, "orall", PDDLP_TOKEN_FORALL);
-	case 'h':
-		if (t->current - t->start > 5 && t->start[1] == 'o' && t->start[2] == 'l' && t->start[3] == 'd' && t->start[4] == '-') {
-			switch(t->start[5]) {
-			case 'a': return check_name(t, 6, 4, "fter", PDDLP_TOKEN_HOLD_AFTER);
-			case 'd': return check_name(t, 6, 5, "uring", PDDLP_TOKEN_HOLD_DURING);
-			}
-		}
-		break;
-	case 'i':
-		if (t->current - t->start > 1) {
-			switch (t->start[1]) {
-			case 'm': return check_name(t, 2, 3, "ply", PDDLP_TOKEN_IMPLY);
-			case 'n': return check_name(t, 2, 6, "crease", PDDLP_TOKEN_INCREASE);
-			case 's': return check_name(t, 2, 9, "-violated", PDDLP_TOKEN_IS_VIOLATED);
-			}
-		}
-		break;
-	case 'm':
-		if (t->current - t->start > 1) {
-			switch (t->start[1]) {
-			case 'a': return check_name(t, 2, 6, "ximize", PDDLP_TOKEN_MAXIMIZE);
-			case 'i': return check_name(t, 2, 6, "nimize", PDDLP_TOKEN_MINIMIZE);
-			}
-		}
-		break;
-	case 'n': return check_name(t, 1, 2, "ot", PDDLP_TOKEN_NOT);
-	case 'o':
-		if (t->current - t->start > 1) {
-			switch (t->start[1]) {
-			case 'b': return check_name(t, 2, 4, "ject", PDDLP_TOKEN_OBJECT);
-			case 'r': return check_name(t, 2, 0, "", PDDLP_TOKEN_OR);
-			case 'v': return check_name(t, 2, 2, "er", PDDLP_TOKEN_OVER);
-			}
-		}
-		break;
-	case 'p':
-		if (t->current - t->start > 2 && t->start[1] == 'r') {
-			switch (t->start[2]) {
-			case 'e': return check_name(t, 3, 7, "ference", PDDLP_TOKEN_PREFERENCE);
-			case 'o': return check_name(t, 3, 4, "blem", PDDLP_TOKEN_PROBLEM);
-			}
-		}
-		break;
-	case 's':
-		if (t->current - t->start > 1) {
-			switch (t->start[1]) {
-			case 'c': return check_name(t, 2, 6, "ale-up", PDDLP_TOKEN_SCALE_UP);
-			case 't': return check_name(t, 2, 3, "art", PDDLP_TOKEN_START);
-			}
-		}
-		break;
-	case 't': return check_name(t, 1, 9, "otal-time", PDDLP_TOKEN_TOTAL_TIME);
-	case 'u': return check_name(t, 1, 8, "ndefined", PDDLP_TOKEN_UNDEFINED);
-	case 'w':
-		if (t->current - t->start > 1) {
-			switch (t->start[1]) {
-			case 'h': return check_name(t, 2, 2, "en", PDDLP_TOKEN_WHEN);
-			case 'i': return check_name(t, 2, 4, "thin", PDDLP_TOKEN_WITHIN);
-			}
-		}
-		break;
-	}
+    // TODO(puida): list of language keywords to implement:
+    // all
+    // always
+    // always-within
+    // and
+    // assign
+    // at
+    // at end
+    // at-most-once
+    // sometime
+    // sometime-after
+    // sometime-before
+    switch (t->start[0]) {
+    case 'd':
+        if (t->current - t->start > 1) {
+            switch (t->start[1]) {
+            case 'e':
+                if (t->current - t->start > 2) {
+                    switch(t->start[2]) {
+                    case 'c': return check_name(t, 3, 5, "rease", PDDLP_TOKEN_DECREASE);
+                    case 'f': return check_name(t, 3, 3, "ine", PDDLP_TOKEN_DEFINE);
+                    }
+                }
+                break;
+            case 'o': return check_name(t, 2, 4, "main", PDDLP_TOKEN_DOMAIN);
+            }
+        }
+        break;
+    case 'e':
+        if (t->current - t->start > 1) {
+            switch (t->start[1]) {
+            case 'i': return check_name(t, 2, 4, "ther", PDDLP_TOKEN_EITHER);
+            case 'n': return check_name(t, 2, 1, "d", PDDLP_TOKEN_END);
+            case 'x': return check_name(t, 2, 4, "ists", PDDLP_TOKEN_EXISTS);
+            }
+        }
+        break;
+    case 'f': return check_name(t, 1, 5, "orall", PDDLP_TOKEN_FORALL);
+    case 'h':
+        if (t->current - t->start > 5 && t->start[1] == 'o' && t->start[2] == 'l' && t->start[3] == 'd' && t->start[4] == '-') {
+            switch(t->start[5]) {
+            case 'a': return check_name(t, 6, 4, "fter", PDDLP_TOKEN_HOLD_AFTER);
+            case 'd': return check_name(t, 6, 5, "uring", PDDLP_TOKEN_HOLD_DURING);
+            }
+        }
+        break;
+    case 'i':
+        if (t->current - t->start > 1) {
+            switch (t->start[1]) {
+            case 'm': return check_name(t, 2, 3, "ply", PDDLP_TOKEN_IMPLY);
+            case 'n': return check_name(t, 2, 6, "crease", PDDLP_TOKEN_INCREASE);
+            case 's': return check_name(t, 2, 9, "-violated", PDDLP_TOKEN_IS_VIOLATED);
+            }
+        }
+        break;
+    case 'm':
+        if (t->current - t->start > 1) {
+            switch (t->start[1]) {
+            case 'a': return check_name(t, 2, 6, "ximize", PDDLP_TOKEN_MAXIMIZE);
+            case 'i': return check_name(t, 2, 6, "nimize", PDDLP_TOKEN_MINIMIZE);
+            }
+        }
+        break;
+    case 'n': return check_name(t, 1, 2, "ot", PDDLP_TOKEN_NOT);
+    case 'o':
+        if (t->current - t->start > 1) {
+            switch (t->start[1]) {
+            case 'b': return check_name(t, 2, 4, "ject", PDDLP_TOKEN_OBJECT);
+            case 'r': return check_name(t, 2, 0, "", PDDLP_TOKEN_OR);
+            case 'v': return check_name(t, 2, 2, "er", PDDLP_TOKEN_OVER);
+            }
+        }
+        break;
+    case 'p':
+        if (t->current - t->start > 2 && t->start[1] == 'r') {
+            switch (t->start[2]) {
+            case 'e': return check_name(t, 3, 7, "ference", PDDLP_TOKEN_PREFERENCE);
+            case 'o': return check_name(t, 3, 4, "blem", PDDLP_TOKEN_PROBLEM);
+            }
+        }
+        break;
+    case 's':
+        if (t->current - t->start > 1) {
+            switch (t->start[1]) {
+            case 'c': return check_name(t, 2, 6, "ale-up", PDDLP_TOKEN_SCALE_UP);
+            case 't': return check_name(t, 2, 3, "art", PDDLP_TOKEN_START);
+            }
+        }
+        break;
+    case 't': return check_name(t, 1, 9, "otal-time", PDDLP_TOKEN_TOTAL_TIME);
+    case 'u': return check_name(t, 1, 8, "ndefined", PDDLP_TOKEN_UNDEFINED);
+    case 'w':
+        if (t->current - t->start > 1) {
+            switch (t->start[1]) {
+            case 'h': return check_name(t, 2, 2, "en", PDDLP_TOKEN_WHEN);
+            case 'i': return check_name(t, 2, 4, "thin", PDDLP_TOKEN_WITHIN);
+            }
+        }
+        break;
+    }
 
-	return PDDLP_TOKEN_NAME;
+    return PDDLP_TOKEN_NAME;
 }
 
 static struct pddlp_token
 tokenize_number(struct pddlp_tokenizer *t)
 {
-	while (is_digit(peek(t)))
-		advance(t);
+    while (is_digit(peek(t)))
+        advance(t);
 
-	if (peek(t) == '.' && is_digit(peek_next(t))) {
-		advance(t);
-		while (is_digit(peek(t)))
-			advance(t);
-	}
+    if (peek(t) == '.' && is_digit(peek_next(t))) {
+        advance(t);
 
-	return make_token(t, PDDLP_TOKEN_NUMBER);
+        while (is_digit(peek(t)))
+            advance(t);
+    }
+
+    return make_token(t, PDDLP_TOKEN_NUMBER);
 }
 
 static struct pddlp_token
 tokenize_name(struct pddlp_tokenizer *t)
 {
-	while (is_any_char(peek(t))) advance(t);
+    while (is_any_char(peek(t))) advance(t);
 
-	return make_token(t, name_type(t));
+    return make_token(t, name_type(t));
 }
 
 void
 pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 {
-	t->start = source;
-	t->current = source;
-	t->line = 1;
-	t->column = 1;
+    t->start = source;
+    t->current = source;
+    t->line = 1;
+    t->column = 1;
 }
 
 struct pddlp_token
 pddlp_scan_token(struct pddlp_tokenizer *t)
 {
-	skip_whitespace(t);
-	t->start = t->current;
+    skip_whitespace(t);
+    t->start = t->current;
 
-	if (is_at_end(t))
-		return make_token(t, PDDLP_TOKEN_EOF);
+    if (is_at_end(t))
+        return make_token(t, PDDLP_TOKEN_EOF);
 
-	char c = advance(t);
+    char c = advance(t);
 
-	if (is_digit(c)) return tokenize_number(t);
-	if (is_letter(c)) return tokenize_name(t);
+    if (is_digit(c)) return tokenize_number(t);
+    if (is_letter(c)) return tokenize_name(t);
 
-	switch(c) {
-	case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
-	case ')': return make_token(t, PDDLP_TOKEN_RPAREN);
-	case '+': return make_token(t, PDDLP_TOKEN_PLUS);
-	case '-': return make_token(t, PDDLP_TOKEN_MINUS);
-	case '*': return make_token(t, PDDLP_TOKEN_STAR);
-	case '/': return make_token(t, PDDLP_TOKEN_SLASH);
-	case '<': return make_if_match(t, '=', PDDLP_TOKEN_LTE, PDDLP_TOKEN_LT);
-	case '>': return make_if_match(t, '=', PDDLP_TOKEN_GTE, PDDLP_TOKEN_GT);
-	}
+    switch(c) {
+    case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
+    case ')': return make_token(t, PDDLP_TOKEN_RPAREN);
+    case '+': return make_token(t, PDDLP_TOKEN_PLUS);
+    case '-': return make_token(t, PDDLP_TOKEN_MINUS);
+    case '*': return make_token(t, PDDLP_TOKEN_STAR);
+    case '/': return make_token(t, PDDLP_TOKEN_SLASH);
+    case '<': return make_if_match(t, '=', PDDLP_TOKEN_LTE, PDDLP_TOKEN_LT);
+    case '>': return make_if_match(t, '=', PDDLP_TOKEN_GTE, PDDLP_TOKEN_GT);
+    }
 
-	return error_token(t, "unrecognized character");
+    return error_token(t, "unrecognized character");
 }
