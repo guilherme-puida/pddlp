@@ -88,5 +88,8 @@ main(int argc, char **argv)
     fclose(file);
 
     int error_count = print_all_tokens(source);
-    return error_count;
+    if (error_count)
+        printf("error count: %d\n", error_count);
+
+    return 0;
 }
