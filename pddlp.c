@@ -55,6 +55,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_ASSIGN] = "PDDLP_TOKEN_ASSIGN",
     [PDDLP_TOKEN_DECREASE] = "PDDLP_TOKEN_DECREASE",
     [PDDLP_TOKEN_AT] = "PDDLP_TOKEN_AT",
+    [PDDLP_TOKEN_AT_MOST_ONCE] = "PDDLP_TOKEN_AT_MOST_ONCE",
     [PDDLP_TOKEN_DEFINE] = "PDDLP_TOKEN_DEFINE",
     [PDDLP_TOKEN_DOMAIN] = "PDDLP_TOKEN_DOMAIN",
     [PDDLP_TOKEN_EITHER] = "PDDLP_TOKEN_EITHER",
@@ -233,7 +234,6 @@ name_type(struct pddlp_tokenizer *t)
 
     // TODO(puida): list of language keywords to implement:
     // at end
-    // at-most-once
     // sometime
     // sometime-after
     // sometime-before
@@ -245,6 +245,7 @@ name_type(struct pddlp_tokenizer *t)
         __PDDLP_NAME("and", PDDLP_TOKEN_AND);
         __PDDLP_NAME("assign", PDDLP_TOKEN_ASSIGN);
         __PDDLP_NAME("at", PDDLP_TOKEN_AT);
+        __PDDLP_NAME("at-most-once", PDDLP_TOKEN_AT_MOST_ONCE);
         break;
     case 'd':
         __PDDLP_NAME("decrease", PDDLP_TOKEN_DECREASE);
