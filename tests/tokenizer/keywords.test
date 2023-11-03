@@ -1,6 +1,7 @@
 all
 always
 always-within
+and
 decrease
 define
 domain

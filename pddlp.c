@@ -51,6 +51,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_ALL] = "PDDLP_TOKEN_ALL",
     [PDDLP_TOKEN_ALWAYS] = "PDDLP_TOKEN_ALWAYS",
     [PDDLP_TOKEN_ALWAYS_WITHIN] = "PDDLP_TOKEN_ALWAYS_WITHIN",
+    [PDDLP_TOKEN_AND] = "PDDLP_TOKEN_AND",
     [PDDLP_TOKEN_DECREASE] = "PDDLP_TOKEN_DECREASE",
     [PDDLP_TOKEN_DEFINE] = "PDDLP_TOKEN_DEFINE",
     [PDDLP_TOKEN_DOMAIN] = "PDDLP_TOKEN_DOMAIN",
@@ -229,7 +230,6 @@ name_type(struct pddlp_tokenizer *t)
     }
 
     // TODO(puida): list of language keywords to implement:
-    // and
     // assign
     // at
     // at end
@@ -242,6 +242,7 @@ name_type(struct pddlp_tokenizer *t)
         __PDDLP_NAME("all", PDDLP_TOKEN_ALL);
         __PDDLP_NAME("always", PDDLP_TOKEN_ALWAYS);
         __PDDLP_NAME("always-within", PDDLP_TOKEN_ALWAYS_WITHIN);
+        __PDDLP_NAME("and", PDDLP_TOKEN_AND);
         break;
     case 'd':
         __PDDLP_NAME("decrease", PDDLP_TOKEN_DECREASE);
