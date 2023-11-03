@@ -47,6 +47,7 @@ const char *pddlp_token_type_names[] = {
 
     [PDDLP_TOKEN_NUMBER] = "PDDLP_TOKEN_NUMBER",
     [PDDLP_TOKEN_NAME] = "PDDLP_TOKEN_NAME",
+    [PDDLP_TOKEN_VARIABLE] = "PDDLP_TOKEN_VARIABLE",
 
     [PDDLP_TOKEN_ALL] = "PDDLP_TOKEN_ALL",
     [PDDLP_TOKEN_ALWAYS] = "PDDLP_TOKEN_ALWAYS",
@@ -336,6 +337,21 @@ tokenize_name(struct pddlp_tokenizer *t)
     return make_token(t, name_type(t));
 }
 
+static struct pddlp_token
+tokenize_variable(struct pddlp_tokenizer *t)
+{
+    int should_error = !is_letter(peek(t));
+
+    advance(t);
+
+    while (is_any_char(peek(t))) advance(t);
+
+    if (should_error)
+        return error_token(t, "first character of a variable should be a letter");
+
+    return make_token(t, PDDLP_TOKEN_VARIABLE);
+}
+
 void
 pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 {
@@ -356,6 +372,7 @@ pddlp_scan_token(struct pddlp_tokenizer *t)
 
     char c = advance(t);
 
+    if (c == '?') return tokenize_variable(t);
     if (is_digit(c)) return tokenize_number(t);
     if (is_letter(c)) return tokenize_name(t);
 

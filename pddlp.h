@@ -46,6 +46,7 @@ enum pddlp_token_type {
 
     PDDLP_TOKEN_NUMBER,
     PDDLP_TOKEN_NAME,
+    PDDLP_TOKEN_VARIABLE,
 
     PDDLP_TOKEN_ALL,
     PDDLP_TOKEN_ALWAYS,
