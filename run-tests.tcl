@@ -22,5 +22,6 @@ foreach test $tests {
     puts -nonewline $out $actual
     close $out
     puts "= $test CREATED"
+    puts $actual
   }
 }
