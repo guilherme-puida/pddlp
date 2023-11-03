@@ -302,6 +302,8 @@ name_type(struct pddlp_tokenizer *t)
         break;
     }
 
+    #undef __PDDLP_NAME
+
     return PDDLP_TOKEN_NAME;
 }
 #pragma GCC diagnostic pop
