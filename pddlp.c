@@ -203,11 +203,30 @@ error_token(struct pddlp_tokenizer *t, const char *message)
     return token;
 }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Warray-bounds"
+#define __PDDLP_NAME(name, token)                                       \
+{                                                                       \
+    int name_length = sizeof(name) - 1;                                 \
+    if (token_length == name_length && t->start[1] == name[1] &&        \
+        (name_length <= 2 || t->start[2] == name[2]) &&                 \
+        (name_length <= 3 || t->start[3] == name[3]) &&                 \
+        (name_length <= 4 || t->start[4] == name[4]) &&                 \
+        (name_length <= 5 || t->start[5] == name[5]) &&                 \
+        (name_length <= 6 || t->start[6] == name[6]) &&                 \
+        (name_length <= 7 || t->start[7] == name[7]) &&                 \
+        (name_length <= 8 || t->start[8] == name[8]) &&                 \
+        (name_length <= 9 || t->start[9] == name[9]) &&                 \
+        (name_length <= 10 || t->start[10] == name[10]) &&              \
+        (name_length <= 11 || t->start[11] == name[11]) &&              \
+        (name_length <= 12 || t->start[12] == name[12]) &&              \
+        (name_length <= 13 || t->start[13] == name[13]) &&              \
+        (name_length <= 14 || t->start[14] == name[14]) &&              \
+        (name_length <= 15 || t->start[15] == name[15])) return token;  \
+}
+
 static enum pddlp_token_type
 name_type(struct pddlp_tokenizer *t)
 {
+
     int token_length = t->current - t->start;
 
     // user-defined names can be any length, but language
@@ -215,26 +234,11 @@ name_type(struct pddlp_tokenizer *t)
     if (token_length < 2 || token_length > 15)
         return PDDLP_TOKEN_NAME;
 
-    #define __PDDLP_NAME(name, token)                                       \
-    {                                                                       \
-        int name_length = sizeof(name) - 1;                                 \
-        if (token_length == name_length && t->start[1] == name[1] &&        \
-            (name_length <= 2 || t->start[2] == name[2]) &&                 \
-            (name_length <= 3 || t->start[3] == name[3]) &&                 \
-            (name_length <= 4 || t->start[4] == name[4]) &&                 \
-            (name_length <= 5 || t->start[5] == name[5]) &&                 \
-            (name_length <= 6 || t->start[6] == name[6]) &&                 \
-            (name_length <= 7 || t->start[7] == name[7]) &&                 \
-            (name_length <= 8 || t->start[8] == name[8]) &&                 \
-            (name_length <= 9 || t->start[9] == name[9]) &&                 \
-            (name_length <= 10 || t->start[10] == name[10]) &&              \
-            (name_length <= 11 || t->start[11] == name[11]) &&              \
-            (name_length <= 12 || t->start[12] == name[12]) &&              \
-            (name_length <= 13 || t->start[13] == name[13]) &&              \
-            (name_length <= 14 || t->start[14] == name[14]) &&              \
-            (name_length <= 15 || t->start[15] == name[15])) return token;  \
-    }
 
+    // NOTE: we already check the array bounds inside the __PDDLP_NAME macro,
+    //       so we can safely disable the warning here.
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
     switch (t->start[0]) {
     case 'a':
         __PDDLP_NAME("all", PDDLP_TOKEN_ALL);
@@ -301,12 +305,12 @@ name_type(struct pddlp_tokenizer *t)
         __PDDLP_NAME("within", PDDLP_TOKEN_WITHIN);
         break;
     }
-
-    #undef __PDDLP_NAME
+#pragma GCC diagnostic pop
 
     return PDDLP_TOKEN_NAME;
 }
-#pragma GCC diagnostic pop
+
+#undef __PDDLP_NAME
 
 static struct pddlp_token
 tokenize_number(struct pddlp_tokenizer *t)
