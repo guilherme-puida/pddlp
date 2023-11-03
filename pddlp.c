@@ -198,7 +198,7 @@ error_token(struct pddlp_tokenizer *t, const char *message)
     token.start = message;
     token.length = strlen(message);
     token.line = t->line;
-    token.column = t->column;
+    token.column = t->column - (t->current - t->start);
 
     return token;
 }
