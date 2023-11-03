@@ -235,8 +235,6 @@ name_type(struct pddlp_tokenizer *t)
             (name_length <= 15 || t->start[15] == name[15])) return token;  \
     }
 
-    // TODO(puida): list of language keywords to implement:
-    // at end
     switch (t->start[0]) {
     case 'a':
         __PDDLP_NAME("all", PDDLP_TOKEN_ALL);
