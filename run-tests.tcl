@@ -15,6 +15,7 @@ foreach test $tests {
       puts "= $test OK"
     } else {
       puts "= $test FAILED"
+      puts $result
     }
   } else {
     set out [open $expected w]
