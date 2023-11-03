@@ -78,6 +78,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SCALE_UP] = "PDDLP_TOKEN_SCALE_UP",
     [PDDLP_TOKEN_START] = "PDDLP_TOKEN_START",
     [PDDLP_TOKEN_SOMETIME] = "PDDLP_TOKEN_SOMETIME",
+    [PDDLP_TOKEN_SOMETIME_AFTER] = "PDDLP_TOKEN_SOMETIME_AFTER",
     [PDDLP_TOKEN_TOTAL_TIME] = "PDDLP_TOKEN_TOTAL_TIME",
     [PDDLP_TOKEN_UNDEFINED] = "PDDLP_TOKEN_UNDEFINED",
     [PDDLP_TOKEN_WHEN] = "PDDLP_TOKEN_WHEN",
@@ -235,7 +236,6 @@ name_type(struct pddlp_tokenizer *t)
 
     // TODO(puida): list of language keywords to implement:
     // at end
-    // sometime-after
     // sometime-before
     switch (t->start[0]) {
     case 'a':
@@ -289,6 +289,7 @@ name_type(struct pddlp_tokenizer *t)
         __PDDLP_NAME("scale-up", PDDLP_TOKEN_SCALE_UP);
         __PDDLP_NAME("start", PDDLP_TOKEN_START);
         __PDDLP_NAME("sometime", PDDLP_TOKEN_SOMETIME);
+        __PDDLP_NAME("sometime-after", PDDLP_TOKEN_SOMETIME_AFTER);
         break;
     case 't':
         __PDDLP_NAME("total-time", PDDLP_TOKEN_TOTAL_TIME);
