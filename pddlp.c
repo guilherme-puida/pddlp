@@ -193,21 +193,38 @@ error_token(struct pddlp_tokenizer *t, const char *message)
     return token;
 }
 
-static enum pddlp_token_type
-check_name(struct pddlp_tokenizer *t, int start, int length,
-       const char *rest, enum pddlp_token_type token_type)
-{
-    if (t->current - t->start == start + length &&
-        memcmp(t->start + start, rest, length) == 0) {
-        return token_type;
-    }
-
-    return PDDLP_TOKEN_NAME;
-}
-
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Warray-bounds"
 static enum pddlp_token_type
 name_type(struct pddlp_tokenizer *t)
 {
+    int token_length = t->current - t->start;
+
+    // user-defined names can be any length, but language
+    // keywords are only >= 2 (at, or) and <= 15 (sometime-before).
+    if (token_length < 2 || token_length > 15)
+        return PDDLP_TOKEN_NAME;
+
+    #define __PDDLP_NAME(name, token)                                       \
+    {                                                                       \
+        int name_length = sizeof(name) - 1;                                 \
+        if (token_length == name_length && t->start[1] == name[1] &&        \
+            (name_length <= 2 || t->start[2] == name[2]) &&                 \
+            (name_length <= 3 || t->start[3] == name[3]) &&                 \
+            (name_length <= 4 || t->start[4] == name[4]) &&                 \
+            (name_length <= 5 || t->start[5] == name[5]) &&                 \
+            (name_length <= 6 || t->start[6] == name[6]) &&                 \
+            (name_length <= 7 || t->start[7] == name[7]) &&                 \
+            (name_length <= 8 || t->start[8] == name[8]) &&                 \
+            (name_length <= 9 || t->start[9] == name[9]) &&                 \
+            (name_length <= 10 || t->start[10] == name[10]) &&              \
+            (name_length <= 11 || t->start[11] == name[11]) &&              \
+            (name_length <= 12 || t->start[12] == name[12]) &&              \
+            (name_length <= 13 || t->start[13] == name[13]) &&              \
+            (name_length <= 14 || t->start[14] == name[14]) &&              \
+            (name_length <= 15 || t->start[15] == name[15])) return token;  \
+    }
+
     // TODO(puida): list of language keywords to implement:
     // all
     // always
@@ -222,95 +239,62 @@ name_type(struct pddlp_tokenizer *t)
     // sometime-before
     switch (t->start[0]) {
     case 'd':
-        if (t->current - t->start > 1) {
-            switch (t->start[1]) {
-            case 'e':
-                if (t->current - t->start > 2) {
-                    switch(t->start[2]) {
-                    case 'c': return check_name(t, 3, 5, "rease", PDDLP_TOKEN_DECREASE);
-                    case 'f': return check_name(t, 3, 3, "ine", PDDLP_TOKEN_DEFINE);
-                    }
-                }
-                break;
-            case 'o': return check_name(t, 2, 4, "main", PDDLP_TOKEN_DOMAIN);
-            }
-        }
+        __PDDLP_NAME("decrease", PDDLP_TOKEN_DECREASE);
+        __PDDLP_NAME("define", PDDLP_TOKEN_DEFINE);
+        __PDDLP_NAME("domain", PDDLP_TOKEN_DOMAIN);
         break;
     case 'e':
-        if (t->current - t->start > 1) {
-            switch (t->start[1]) {
-            case 'i': return check_name(t, 2, 4, "ther", PDDLP_TOKEN_EITHER);
-            case 'n': return check_name(t, 2, 1, "d", PDDLP_TOKEN_END);
-            case 'x': return check_name(t, 2, 4, "ists", PDDLP_TOKEN_EXISTS);
-            }
-        }
+        __PDDLP_NAME("either", PDDLP_TOKEN_EITHER);
+        __PDDLP_NAME("end", PDDLP_TOKEN_END);
+        __PDDLP_NAME("exists", PDDLP_TOKEN_EXISTS);
         break;
-    case 'f': return check_name(t, 1, 5, "orall", PDDLP_TOKEN_FORALL);
+    case 'f':
+        __PDDLP_NAME("forall", PDDLP_TOKEN_FORALL);
+        break;
     case 'h':
-        if (t->current - t->start > 5 && t->start[1] == 'o' && t->start[2] == 'l' && t->start[3] == 'd' && t->start[4] == '-') {
-            switch(t->start[5]) {
-            case 'a': return check_name(t, 6, 4, "fter", PDDLP_TOKEN_HOLD_AFTER);
-            case 'd': return check_name(t, 6, 5, "uring", PDDLP_TOKEN_HOLD_DURING);
-            }
-        }
+        __PDDLP_NAME("hold-after", PDDLP_TOKEN_HOLD_AFTER);
+        __PDDLP_NAME("hold-during", PDDLP_TOKEN_HOLD_DURING);
         break;
     case 'i':
-        if (t->current - t->start > 1) {
-            switch (t->start[1]) {
-            case 'm': return check_name(t, 2, 3, "ply", PDDLP_TOKEN_IMPLY);
-            case 'n': return check_name(t, 2, 6, "crease", PDDLP_TOKEN_INCREASE);
-            case 's': return check_name(t, 2, 9, "-violated", PDDLP_TOKEN_IS_VIOLATED);
-            }
-        }
+        __PDDLP_NAME("imply", PDDLP_TOKEN_IMPLY);
+        __PDDLP_NAME("increase", PDDLP_TOKEN_INCREASE);
+        __PDDLP_NAME("is-violated", PDDLP_TOKEN_IS_VIOLATED);
         break;
     case 'm':
-        if (t->current - t->start > 1) {
-            switch (t->start[1]) {
-            case 'a': return check_name(t, 2, 6, "ximize", PDDLP_TOKEN_MAXIMIZE);
-            case 'i': return check_name(t, 2, 6, "nimize", PDDLP_TOKEN_MINIMIZE);
-            }
-        }
+        __PDDLP_NAME("maximize", PDDLP_TOKEN_MAXIMIZE);
+        __PDDLP_NAME("minimize", PDDLP_TOKEN_MINIMIZE);
         break;
-    case 'n': return check_name(t, 1, 2, "ot", PDDLP_TOKEN_NOT);
+    case 'n':
+        __PDDLP_NAME("not", PDDLP_TOKEN_NOT);
+        break;
     case 'o':
-        if (t->current - t->start > 1) {
-            switch (t->start[1]) {
-            case 'b': return check_name(t, 2, 4, "ject", PDDLP_TOKEN_OBJECT);
-            case 'r': return check_name(t, 2, 0, "", PDDLP_TOKEN_OR);
-            case 'v': return check_name(t, 2, 2, "er", PDDLP_TOKEN_OVER);
-            }
-        }
+        __PDDLP_NAME("object", PDDLP_TOKEN_OBJECT);
+        __PDDLP_NAME("or", PDDLP_TOKEN_OR);
+        __PDDLP_NAME("over", PDDLP_TOKEN_OVER);
         break;
     case 'p':
-        if (t->current - t->start > 2 && t->start[1] == 'r') {
-            switch (t->start[2]) {
-            case 'e': return check_name(t, 3, 7, "ference", PDDLP_TOKEN_PREFERENCE);
-            case 'o': return check_name(t, 3, 4, "blem", PDDLP_TOKEN_PROBLEM);
-            }
-        }
+        __PDDLP_NAME("preference", PDDLP_TOKEN_PREFERENCE);
+        __PDDLP_NAME("problem", PDDLP_TOKEN_PROBLEM);
         break;
     case 's':
-        if (t->current - t->start > 1) {
-            switch (t->start[1]) {
-            case 'c': return check_name(t, 2, 6, "ale-up", PDDLP_TOKEN_SCALE_UP);
-            case 't': return check_name(t, 2, 3, "art", PDDLP_TOKEN_START);
-            }
-        }
+        __PDDLP_NAME("scale-up", PDDLP_TOKEN_SCALE_UP);
+        __PDDLP_NAME("start", PDDLP_TOKEN_START);
         break;
-    case 't': return check_name(t, 1, 9, "otal-time", PDDLP_TOKEN_TOTAL_TIME);
-    case 'u': return check_name(t, 1, 8, "ndefined", PDDLP_TOKEN_UNDEFINED);
+    case 't':
+        __PDDLP_NAME("total-time", PDDLP_TOKEN_TOTAL_TIME);
+        break;
+    case 'u':
+        __PDDLP_NAME("undefined", PDDLP_TOKEN_UNDEFINED);
+        break;
     case 'w':
-        if (t->current - t->start > 1) {
-            switch (t->start[1]) {
-            case 'h': return check_name(t, 2, 2, "en", PDDLP_TOKEN_WHEN);
-            case 'i': return check_name(t, 2, 4, "thin", PDDLP_TOKEN_WITHIN);
-            }
-        }
+        __PDDLP_NAME("when", PDDLP_TOKEN_WHEN);
+        __PDDLP_NAME("within", PDDLP_TOKEN_WITHIN);
         break;
     }
 
     return PDDLP_TOKEN_NAME;
 }
+#pragma GCC diagnostic pop
 
 static struct pddlp_token
 tokenize_number(struct pddlp_tokenizer *t)
