@@ -105,6 +105,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_EFFECT] = "PDDLP_TOKEN_SYM_EFFECT",
     [PDDLP_TOKEN_SYM_EQUALITY] = "PDDLP_TOKEN_SYM_EQUALITY",
     [PDDLP_TOKEN_SYM_EXISTENTIAL_PRECONDITIONS] = "PDDLP_TOKEN_SYM_EXISTENTIAL_PRECONDITIONS",
+    [PDDLP_TOKEN_SYM_FLUENTS] = "PDDLP_TOKEN_SYM_FLUENTS",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -406,6 +407,10 @@ symbol_type(struct pddlp_tokenizer *t)
         __PDDLP_SYM("effect", PDDLP_TOKEN_SYM_EFFECT);
         __PDDLP_SYM("equality", PDDLP_TOKEN_SYM_EQUALITY);
         __PDDLP_SYM("existential-preconditions", PDDLP_TOKEN_SYM_EXISTENTIAL_PRECONDITIONS);
+        break;
+    case 'f':
+        __PDDLP_SYM("fluents", PDDLP_TOKEN_SYM_FLUENTS);
+        break;
     }
 #pragma GCC diagnostic pop
 
