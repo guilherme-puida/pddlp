@@ -514,7 +514,11 @@ tokenize_symbol(struct pddlp_tokenizer *t)
 {
     while (is_any_char(peek(t))) advance(t);
 
-    return make_token(t, symbol_type(t));
+    enum pddlp_token_type token_type = symbol_type(t);
+    if (token_type == PDDLP_TOKEN_ERROR)
+        return error_token(t, "unknown symbol");
+
+    return make_token(t, token_type);
 }
 
 static struct pddlp_token
