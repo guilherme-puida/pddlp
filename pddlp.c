@@ -123,6 +123,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_REQUIREMENTS] = "PDDLP_TOKEN_SYM_REQUIREMENTS",
     [PDDLP_TOKEN_SYM_SERIAL] = "PDDLP_TOKEN_SYM_SERIAL",
     [PDDLP_TOKEN_SYM_STRIPS] = "PDDLP_TOKEN_SYM_STRIPS",
+    [PDDLP_TOKEN_SYM_TIMED_INITIAL_LITERALS] = "PDDLP_TOKEN_SYM_TIMED_INITIAL_LITERALS",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -464,6 +465,9 @@ symbol_type(struct pddlp_tokenizer *t)
     case 's':
         __PDDLP_SYM("serial", PDDLP_TOKEN_SYM_SERIAL);
         __PDDLP_SYM("strips", PDDLP_TOKEN_SYM_STRIPS);
+        break;
+    case 't':
+        __PDDLP_SYM("timed-initial-literals", PDDLP_TOKEN_SYM_TIMED_INITIAL_LITERALS);
         break;
     }
 #pragma GCC diagnostic pop
