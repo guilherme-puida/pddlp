@@ -13,7 +13,7 @@
 [13:01] PDDLP_TOKEN_SYM_DURATION :duration
 [14:01] PDDLP_TOKEN_SYM_DURATION_INEQUALITIES :duration-inequalities
 [15:01] PDDLP_TOKEN_SYM_DURATIVE_ACTION :durative-action
-[16:01] PDDLP_TOKEN_ERROR :durative-actions
+[16:01] PDDLP_TOKEN_SYM_DURATIVE_ACTIONS :durative-actions
 [17:01] PDDLP_TOKEN_ERROR :effect
 [18:01] PDDLP_TOKEN_ERROR :equality
 [19:01] PDDLP_TOKEN_ERROR :existential-preconditions
@@ -40,4 +40,4 @@
 [40:01] PDDLP_TOKEN_ERROR :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 26
+error count: 25
