@@ -120,6 +120,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_PREDICATES] = "PDDLP_TOKEN_SYM_PREDICATES",
     [PDDLP_TOKEN_SYM_PREFERENCES] = "PDDLP_TOKEN_SYM_PREFERENCES",
     [PDDLP_TOKEN_SYM_QUANTIFIED_PRECONDITIONS] = "PDDLP_TOKEN_SYM_QUANTIFIED_PRECONDITIONS",
+    [PDDLP_TOKEN_SYM_REQUIREMENTS] = "PDDLP_TOKEN_SYM_REQUIREMENTS",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -454,6 +455,9 @@ symbol_type(struct pddlp_tokenizer *t)
         break;
     case 'q':
         __PDDLP_SYM("quantified-preconditions", PDDLP_TOKEN_SYM_QUANTIFIED_PRECONDITIONS);
+        break;
+    case 'r':
+        __PDDLP_SYM("requirements", PDDLP_TOKEN_SYM_REQUIREMENTS);
         break;
     }
 #pragma GCC diagnostic pop
