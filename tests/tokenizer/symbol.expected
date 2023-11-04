@@ -11,7 +11,7 @@
 [11:01] PDDLP_TOKEN_SYM_DISJUNCTIVE_PRECONDITIONS :disjunctive-preconditions
 [12:01] PDDLP_TOKEN_SYM_DOMAIN :domain
 [13:01] PDDLP_TOKEN_SYM_DURATION :duration
-[14:01] PDDLP_TOKEN_ERROR :duration-inequalities
+[14:01] PDDLP_TOKEN_SYM_DURATION_INEQUALITIES :duration-inequalities
 [15:01] PDDLP_TOKEN_ERROR :durative-action
 [16:01] PDDLP_TOKEN_ERROR :durative-actions
 [17:01] PDDLP_TOKEN_ERROR :effect
@@ -40,4 +40,4 @@
 [40:01] PDDLP_TOKEN_ERROR :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 28
+error count: 27
