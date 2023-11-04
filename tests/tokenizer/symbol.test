@@ -10,6 +10,7 @@
 :derived-predicates
 :disjunctive-preconditions
 :domain
+:domain-axioms ; logistics-round-1-adl
 :duration
 :duration-inequalities
 :durative-action
