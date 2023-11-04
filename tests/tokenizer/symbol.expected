@@ -21,7 +21,7 @@
 [21:01] PDDLP_TOKEN_SYM_FUNCTIONS :functions
 [22:01] PDDLP_TOKEN_SYM_GOAL :goal
 [23:01] PDDLP_TOKEN_SYM_INIT :init
-[24:01] PDDLP_TOKEN_ERROR :length
+[24:01] PDDLP_TOKEN_SYM_LENGHT :length
 [25:01] PDDLP_TOKEN_ERROR :metric
 [26:01] PDDLP_TOKEN_ERROR :negative-preconditions
 [27:01] PDDLP_TOKEN_ERROR :numeric-fluents
@@ -40,4 +40,4 @@
 [40:01] PDDLP_TOKEN_ERROR :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 18
+error count: 17
