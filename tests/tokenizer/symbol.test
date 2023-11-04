@@ -15,7 +15,6 @@
 :durative-action
 :durative-actions
 :effect
-:effect
 :equality
 :existential-preconditions
 :fluents
