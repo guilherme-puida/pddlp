@@ -138,31 +138,31 @@ const char *pddlp_token_type_names[] = {
 };
 
 static int
-is_digit(char c)
+tok_is_digit(char c)
 {
     return '0' <= c && c <= '9';
 }
 
 static int
-is_letter(char c)
+tok_is_letter(char c)
 {
     return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 }
 
 static int
-is_any_char(char c)
+tok_is_any_char(char c)
 {
-    return is_digit(c) || is_letter(c) || c == '-' || c == '_';
+    return tok_is_digit(c) || tok_is_letter(c) || c == '-' || c == '_';
 }
 
 static int
-is_at_end(struct pddlp_tokenizer *t)
+tok_is_at_end(struct pddlp_tokenizer *t)
 {
     return *t->current == 0;
 }
 
 static char
-advance(struct pddlp_tokenizer *t)
+tok_advance(struct pddlp_tokenizer *t)
 {
     t->current++;
     t->column++;
@@ -170,42 +170,42 @@ advance(struct pddlp_tokenizer *t)
 }
 
 static char
-peek(struct pddlp_tokenizer *t)
+tok_peek(struct pddlp_tokenizer *t)
 {
     return *t->current;
 }
 
 static char
-peek_next(struct pddlp_tokenizer *t)
+tok_peek_next(struct pddlp_tokenizer *t)
 {
-    return is_at_end(t) ? 0 : t->current[1];
+    return tok_is_at_end(t) ? 0 : t->current[1];
 }
 
 static int
-match(struct pddlp_tokenizer *t, char expected)
+tok_match(struct pddlp_tokenizer *t, char expected)
 {
-    if (is_at_end(t) || peek(t) != expected)
+    if (tok_is_at_end(t) || tok_peek(t) != expected)
         return 0;
 
-    advance(t);
+    tok_advance(t);
     return 1;
 }
 
 static void
-skip_whitespace(struct pddlp_tokenizer *t)
+tok_skip_whitespace(struct pddlp_tokenizer *t)
 {
     for (;;) {
-        char c = peek(t);
+        char c = tok_peek(t);
 
         if (c == ' ' || c == '\t' || c == '\r') {
-            advance(t);
+            tok_advance(t);
         } else if (c == '\n') {
             t->line++;
             t->column = 0;
-            advance(t);
+            tok_advance(t);
         } else if (c == ';') {
-            while (peek(t) != '\n' && !is_at_end(t))
-                advance(t);
+            while (tok_peek(t) != '\n' && !tok_is_at_end(t))
+                tok_advance(t);
         } else {
             return;
         }
@@ -214,7 +214,7 @@ skip_whitespace(struct pddlp_tokenizer *t)
 }
 
 static struct pddlp_token
-make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
+tok_make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
 {
     struct pddlp_token token;
 
@@ -228,17 +228,17 @@ make_token(struct pddlp_tokenizer *t, enum pddlp_token_type token_type)
 }
 
 static struct pddlp_token
-make_if_match(
+tok_make_if_match(
     struct pddlp_tokenizer *t,
     char expected,
     enum pddlp_token_type if_match,
     enum pddlp_token_type if_not_match)
 {
-    return make_token(t, match(t, expected) ? if_match : if_not_match);
+    return tok_make_token(t, tok_match(t, expected) ? if_match : if_not_match);
 }
 
 static struct pddlp_token
-error_token(struct pddlp_tokenizer *t, const char *message)
+tok_error_token(struct pddlp_tokenizer *t, const char *message)
 {
     struct pddlp_token token;
 
@@ -272,7 +272,7 @@ error_token(struct pddlp_tokenizer *t, const char *message)
 }
 
 static enum pddlp_token_type
-name_type(struct pddlp_tokenizer *t)
+tok_name_type(struct pddlp_tokenizer *t)
 {
 
     int token_length = t->current - t->start;
@@ -391,7 +391,7 @@ name_type(struct pddlp_tokenizer *t)
 }
 
 static enum pddlp_token_type
-symbol_type(struct pddlp_tokenizer *t)
+tok_symbol_type(struct pddlp_tokenizer *t)
 {
     // we skip one character to avoid dealing with ':'
     const char *start = t->start + 1;
@@ -496,54 +496,54 @@ symbol_type(struct pddlp_tokenizer *t)
 #undef __PDDLP_SYM
 
 static struct pddlp_token
-tokenize_number(struct pddlp_tokenizer *t)
+tok_tokenize_number(struct pddlp_tokenizer *t)
 {
-    while (is_digit(peek(t)))
-        advance(t);
+    while (tok_is_digit(tok_peek(t)))
+        tok_advance(t);
 
-    if (peek(t) == '.' && is_digit(peek_next(t))) {
-        advance(t);
+    if (tok_peek(t) == '.' && tok_is_digit(tok_peek_next(t))) {
+        tok_advance(t);
 
-        while (is_digit(peek(t)))
-            advance(t);
+        while (tok_is_digit(tok_peek(t)))
+            tok_advance(t);
     }
 
-    return make_token(t, PDDLP_TOKEN_NUMBER);
+    return tok_make_token(t, PDDLP_TOKEN_NUMBER);
 }
 
 static struct pddlp_token
-tokenize_name(struct pddlp_tokenizer *t)
+tok_tokenize_name(struct pddlp_tokenizer *t)
 {
-    while (is_any_char(peek(t))) advance(t);
+    while (tok_is_any_char(tok_peek(t))) tok_advance(t);
 
-    return make_token(t, name_type(t));
+    return tok_make_token(t, tok_name_type(t));
 }
 
 static struct pddlp_token
-tokenize_symbol(struct pddlp_tokenizer *t)
+tok_tokenize_symbol(struct pddlp_tokenizer *t)
 {
-    while (is_any_char(peek(t))) advance(t);
+    while (tok_is_any_char(tok_peek(t))) tok_advance(t);
 
-    enum pddlp_token_type token_type = symbol_type(t);
+    enum pddlp_token_type token_type = tok_symbol_type(t);
     if (token_type == PDDLP_TOKEN_ERROR)
-        return error_token(t, "unknown symbol");
+        return tok_error_token(t, "unknown symbol");
 
-    return make_token(t, token_type);
+    return tok_make_token(t, token_type);
 }
 
 static struct pddlp_token
-tokenize_variable(struct pddlp_tokenizer *t)
+tok_tokenize_variable(struct pddlp_tokenizer *t)
 {
-    int should_error = !is_letter(peek(t));
+    int should_error = !tok_is_letter(tok_peek(t));
 
-    advance(t);
+    tok_advance(t);
 
-    while (is_any_char(peek(t))) advance(t);
+    while (tok_is_any_char(tok_peek(t))) tok_advance(t);
 
     if (should_error)
-        return error_token(t, "first character of a variable should be a letter");
+        return tok_error_token(t, "first character of a variable should be a letter");
 
-    return make_token(t, PDDLP_TOKEN_VARIABLE);
+    return tok_make_token(t, PDDLP_TOKEN_VARIABLE);
 }
 
 void
@@ -558,31 +558,31 @@ pddlp_init_tokenizer(struct pddlp_tokenizer *t, const char *source)
 struct pddlp_token
 pddlp_scan_token(struct pddlp_tokenizer *t)
 {
-    skip_whitespace(t);
+    tok_skip_whitespace(t);
     t->start = t->current;
 
-    if (is_at_end(t))
-        return make_token(t, PDDLP_TOKEN_EOF);
+    if (tok_is_at_end(t))
+        return tok_make_token(t, PDDLP_TOKEN_EOF);
 
-    char c = advance(t);
+    char c = tok_advance(t);
 
-    if (is_digit(c)) return tokenize_number(t);
-    if (is_letter(c)) return tokenize_name(t);
+    if (tok_is_digit(c)) return tok_tokenize_number(t);
+    if (tok_is_letter(c)) return tok_tokenize_name(t);
 
     switch(c) {
-    case ':': return tokenize_symbol(t);
-    case '?': return tokenize_variable(t);
-    case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
-    case ')': return make_token(t, PDDLP_TOKEN_RPAREN);
-    case '+': return make_token(t, PDDLP_TOKEN_PLUS);
-    case '-': return make_token(t, PDDLP_TOKEN_MINUS);
-    case '*': return make_token(t, PDDLP_TOKEN_STAR);
-    case '/': return make_token(t, PDDLP_TOKEN_SLASH);
-    case '=': return make_token(t, PDDLP_TOKEN_EQ);
-    case '<': return make_if_match(t, '=', PDDLP_TOKEN_LTE, PDDLP_TOKEN_LT);
-    case '>': return make_if_match(t, '=', PDDLP_TOKEN_GTE, PDDLP_TOKEN_GT);
-    case '#': if (match(t, 't')) return make_token(t, PDDLP_TOKEN_HASH_T);
+    case ':': return tok_tokenize_symbol(t);
+    case '?': return tok_tokenize_variable(t);
+    case '(': return tok_make_token(t, PDDLP_TOKEN_LPAREN);
+    case ')': return tok_make_token(t, PDDLP_TOKEN_RPAREN);
+    case '+': return tok_make_token(t, PDDLP_TOKEN_PLUS);
+    case '-': return tok_make_token(t, PDDLP_TOKEN_MINUS);
+    case '*': return tok_make_token(t, PDDLP_TOKEN_STAR);
+    case '/': return tok_make_token(t, PDDLP_TOKEN_SLASH);
+    case '=': return tok_make_token(t, PDDLP_TOKEN_EQ);
+    case '<': return tok_make_if_match(t, '=', PDDLP_TOKEN_LTE, PDDLP_TOKEN_LT);
+    case '>': return tok_make_if_match(t, '=', PDDLP_TOKEN_GTE, PDDLP_TOKEN_GT);
+    case '#': if (tok_match(t, 't')) return tok_make_token(t, PDDLP_TOKEN_HASH_T);
     }
 
-    return error_token(t, "unrecognized character");
+    return tok_error_token(t, "unrecognized character");
 }
