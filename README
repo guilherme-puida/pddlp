@@ -18,6 +18,8 @@ There is a basic test-suite implemented. To run the tests:
 
   make test
 
+Running tests require that you have a recent-ish version of tcl installed.
+
 == References ==
 
 "Daniel L, Kovacs. BNF definition of PDDLP 3.1. 2011"
