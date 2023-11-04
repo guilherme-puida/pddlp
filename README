@@ -20,6 +20,12 @@ There is a basic test-suite implemented. To run the tests:
 
 Running tests require that you have a recent-ish version of tcl installed.
 
+== Limitations ==
+
+Only the tokenizer is currently implemented, and it is case-sensitive. Because
+of this case-sensitivity, some domains/problems from IPC competitions are not
+tokenized correctly.
+
 == References ==
 
 "Daniel L, Kovacs. BNF definition of PDDLP 3.1. 2011"
