@@ -2,7 +2,7 @@
 [02:01] PDDLP_TOKEN_SYM_ACTION_COSTS :action-costs
 [03:01] PDDLP_TOKEN_SYM_ADL :adl
 [04:01] PDDLP_TOKEN_SYM_CONDITION :condition
-[05:01] PDDLP_TOKEN_ERROR :conditional-effects
+[05:01] PDDLP_TOKEN_SYM_CONDITIONAL_EFFECTS :conditional-effects
 [06:01] PDDLP_TOKEN_ERROR :constants
 [07:01] PDDLP_TOKEN_ERROR :constraints
 [08:01] PDDLP_TOKEN_ERROR :continuous-effects
@@ -41,4 +41,4 @@
 [41:01] PDDLP_TOKEN_ERROR :typing
 [42:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 38
+error count: 37
