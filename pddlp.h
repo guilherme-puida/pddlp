@@ -85,6 +85,8 @@ enum pddlp_token_type {
     PDDLP_TOKEN_WHEN,
     PDDLP_TOKEN_WITHIN,
 
+    PDDLP_TOKEN_SYM_ACTION,
+
     PDDLP_TOKEN_EOF,
     PDDLP_TOKEN_ERROR,
 };
