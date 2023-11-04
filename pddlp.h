@@ -43,6 +43,7 @@ enum pddlp_token_type {
     PDDLP_TOKEN_LTE,
     PDDLP_TOKEN_GT,
     PDDLP_TOKEN_GTE,
+    PDDLP_TOKEN_HASH_T,
 
     PDDLP_TOKEN_NUMBER,
     PDDLP_TOKEN_NAME,
