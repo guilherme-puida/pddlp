@@ -100,6 +100,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_DOMAIN] = "PDDLP_TOKEN_SYM_DOMAIN",
     [PDDLP_TOKEN_SYM_DURATION] = "PDDLP_TOKEN_SYM_DURATION",
     [PDDLP_TOKEN_SYM_DURATION_INEQUALITIES] = "PDDLP_TOKEN_SYM_DURATION_INEQUALITIES",
+    [PDDLP_TOKEN_SYM_DURATIVE_ACTION] = "PDDLP_TOKEN_SYM_DURATIVE_ACTION",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -394,6 +395,7 @@ symbol_type(struct pddlp_tokenizer *t)
         __PDDLP_SYM("domain", PDDLP_TOKEN_SYM_DOMAIN);
         __PDDLP_SYM("duration", PDDLP_TOKEN_SYM_DURATION);
         __PDDLP_SYM("duration-inequalities", PDDLP_TOKEN_SYM_DURATION_INEQUALITIES);
+        __PDDLP_SYM("durative-action", PDDLP_TOKEN_SYM_DURATIVE_ACTION);
         break;
     }
 #pragma GCC diagnostic pop
