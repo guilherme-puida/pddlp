@@ -33,11 +33,11 @@
 [33:01] PDDLP_TOKEN_SYM_PREFERENCES :preferences
 [34:01] PDDLP_TOKEN_SYM_QUANTIFIED_PRECONDITIONS :quantified-preconditions
 [35:01] PDDLP_TOKEN_SYM_REQUIREMENTS :requirements
-[36:01] PDDLP_TOKEN_ERROR :serial
+[36:01] PDDLP_TOKEN_SYM_SERIAL :serial
 [37:01] PDDLP_TOKEN_ERROR :strips
 [38:01] PDDLP_TOKEN_ERROR :timed-initial-literals
 [39:01] PDDLP_TOKEN_ERROR :types
 [40:01] PDDLP_TOKEN_ERROR :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 6
+error count: 5
