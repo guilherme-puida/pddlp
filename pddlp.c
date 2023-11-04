@@ -97,6 +97,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_DERIVED] = "PDDLP_TOKEN_SYM_DERIVED",
     [PDDLP_TOKEN_SYM_DERIVED_PREDICATES] = "PDDLP_TOKEN_SYM_DERIVED_PREDICATES",
     [PDDLP_TOKEN_SYM_DISJUNCTIVE_PRECONDITIONS] = "PDDLP_TOKEN_SYM_DISJUNCTIVE_PRECONDITIONS",
+    [PDDLP_TOKEN_SYM_DOMAIN] = "PDDLP_TOKEN_SYM_DOMAIN",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -388,6 +389,7 @@ symbol_type(struct pddlp_tokenizer *t)
         __PDDLP_SYM("derived", PDDLP_TOKEN_SYM_DERIVED);
         __PDDLP_SYM("derived-predicates", PDDLP_TOKEN_SYM_DERIVED_PREDICATES);
         __PDDLP_SYM("disjunctive-preconditions", PDDLP_TOKEN_SYM_DISJUNCTIVE_PRECONDITIONS);
+        __PDDLP_SYM("domain", PDDLP_TOKEN_SYM_DOMAIN);
         break;
     }
 #pragma GCC diagnostic pop
