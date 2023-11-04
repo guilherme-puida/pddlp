@@ -552,12 +552,12 @@ pddlp_scan_token(struct pddlp_tokenizer *t)
 
     char c = advance(t);
 
-    if (c == ':') return tokenize_symbol(t);
-    if (c == '?') return tokenize_variable(t);
     if (is_digit(c)) return tokenize_number(t);
     if (is_letter(c)) return tokenize_name(t);
 
     switch(c) {
+    case ':': return tokenize_symbol(t);
+    case '?': return tokenize_variable(t);
     case '(': return make_token(t, PDDLP_TOKEN_LPAREN);
     case ')': return make_token(t, PDDLP_TOKEN_RPAREN);
     case '+': return make_token(t, PDDLP_TOKEN_PLUS);
