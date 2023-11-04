@@ -38,6 +38,5 @@
 [38:01] PDDLP_TOKEN_SYM_TIMED_INITIAL_LITERALS :timed-initial-literals
 [39:01] PDDLP_TOKEN_SYM_TYPES :types
 [40:01] PDDLP_TOKEN_SYM_TYPING :typing
-[41:01] PDDLP_TOKEN_ERROR :universal-preconditions
+[41:01] PDDLP_TOKEN_SYM_UNIVERSAL_PRECONDITIONS :universal-preconditions
 EOF
-error count: 1
