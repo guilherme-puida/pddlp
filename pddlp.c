@@ -370,6 +370,7 @@ symbol_type(struct pddlp_tokenizer *t)
         __PDDLP_SYM("action", PDDLP_TOKEN_SYM_ACTION);
         __PDDLP_SYM("action-costs", PDDLP_TOKEN_SYM_ACTION_COSTS);
         __PDDLP_SYM("adl", PDDLP_TOKEN_SYM_ADL);
+        break;
     case 'c':
         __PDDLP_SYM("condition", PDDLP_TOKEN_SYM_CONDITION);
         __PDDLP_SYM("conditional-effects", PDDLP_TOKEN_SYM_CONDITIONAL_EFFECTS);
