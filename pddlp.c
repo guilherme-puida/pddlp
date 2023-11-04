@@ -130,6 +130,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_TYPES] = "PDDLP_TOKEN_SYM_TYPES",
     [PDDLP_TOKEN_SYM_TYPING] = "PDDLP_TOKEN_SYM_TYPING",
     [PDDLP_TOKEN_SYM_UNIVERSAL_PRECONDITIONS] = "PDDLP_TOKEN_SYM_UNIVERSAL_PRECONDITIONS",
+    [PDDLP_TOKEN_SYM_VARS] = "PDDLP_TOKEN_SYM_VARS",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -480,6 +481,9 @@ symbol_type(struct pddlp_tokenizer *t)
         break;
     case 'u':
         __PDDLP_SYM("universal-preconditions", PDDLP_TOKEN_SYM_UNIVERSAL_PRECONDITIONS);
+        break;
+    case 'v':
+        __PDDLP_SYM("vars", PDDLP_TOKEN_SYM_VARS);
         break;
     }
 #pragma GCC diagnostic pop
