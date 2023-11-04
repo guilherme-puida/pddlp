@@ -103,6 +103,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_DURATIVE_ACTION] = "PDDLP_TOKEN_SYM_DURATIVE_ACTION",
     [PDDLP_TOKEN_SYM_DURATIVE_ACTIONS] = "PDDLP_TOKEN_SYM_DURATIVE_ACTIONS",
     [PDDLP_TOKEN_SYM_EFFECT] = "PDDLP_TOKEN_SYM_EFFECT",
+    [PDDLP_TOKEN_SYM_EQUALITY] = "PDDLP_TOKEN_SYM_EQUALITY",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -402,6 +403,7 @@ symbol_type(struct pddlp_tokenizer *t)
         break;
     case 'e':
         __PDDLP_SYM("effect", PDDLP_TOKEN_SYM_EFFECT);
+        __PDDLP_SYM("equality", PDDLP_TOKEN_SYM_EQUALITY);
     }
 #pragma GCC diagnostic pop
 
