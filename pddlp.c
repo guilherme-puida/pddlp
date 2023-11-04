@@ -39,6 +39,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_MINUS] = "PDDLP_TOKEN_MINUS",
     [PDDLP_TOKEN_STAR] = "PDDLP_TOKEN_STAR",
     [PDDLP_TOKEN_SLASH] = "PDDLP_TOKEN_SLASH",
+    [PDDLP_TOKEN_EQ] = "PDDLP_TOKEN_EQ",
 
     [PDDLP_TOKEN_LT] = "PDDLP_TOKEN_LT",
     [PDDLP_TOKEN_LTE] = "PDDLP_TOKEN_LTE",
@@ -569,6 +570,7 @@ pddlp_scan_token(struct pddlp_tokenizer *t)
     case '-': return make_token(t, PDDLP_TOKEN_MINUS);
     case '*': return make_token(t, PDDLP_TOKEN_STAR);
     case '/': return make_token(t, PDDLP_TOKEN_SLASH);
+    case '=': return make_token(t, PDDLP_TOKEN_EQ);
     case '<': return make_if_match(t, '=', PDDLP_TOKEN_LTE, PDDLP_TOKEN_LT);
     case '>': return make_if_match(t, '=', PDDLP_TOKEN_GTE, PDDLP_TOKEN_GT);
     case '#': if (match(t, 't')) return make_token(t, PDDLP_TOKEN_HASH_T);

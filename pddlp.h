@@ -38,6 +38,7 @@ enum pddlp_token_type {
     PDDLP_TOKEN_MINUS,
     PDDLP_TOKEN_STAR,
     PDDLP_TOKEN_SLASH,
+    PDDLP_TOKEN_EQ,
 
     PDDLP_TOKEN_LT,
     PDDLP_TOKEN_LTE,
