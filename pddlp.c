@@ -88,6 +88,7 @@ const char *pddlp_token_type_names[] = {
 
     [PDDLP_TOKEN_SYM_ACTION] = "PDDLP_TOKEN_SYM_ACTION",
     [PDDLP_TOKEN_SYM_ACTION_COSTS] = "PDDLP_TOKEN_SYM_ACTION_COSTS",
+    [PDDLP_TOKEN_SYM_ADL] = "PDDLP_TOKEN_SYM_ADL",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -366,6 +367,7 @@ symbol_type(struct pddlp_tokenizer *t)
     case 'a':
         __PDDLP_SYM("action", PDDLP_TOKEN_SYM_ACTION);
         __PDDLP_SYM("action-costs", PDDLP_TOKEN_SYM_ACTION_COSTS);
+        __PDDLP_SYM("adl", PDDLP_TOKEN_SYM_ADL);
     }
 #pragma GCC diagnostic pop
 
