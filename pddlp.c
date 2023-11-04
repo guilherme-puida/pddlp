@@ -114,6 +114,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_NEGATIVE_PRECONDITIONS] = "PDDLP_TOKEN_SYM_NEGATIVE_PRECONDITIONS",
     [PDDLP_TOKEN_SYM_NUMERIC_FLUENTS] = "PDDLP_TOKEN_SYM_NUMERIC_FLUENTS",
     [PDDLP_TOKEN_SYM_OBJECTS] = "PDDLP_TOKEN_SYM_OBJECTS",
+    [PDDLP_TOKEN_SYM_PARALLEL] = "PDDLP_TOKEN_SYM_PARALLEL",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -438,6 +439,9 @@ symbol_type(struct pddlp_tokenizer *t)
         break;
     case 'o':
         __PDDLP_SYM("objects", PDDLP_TOKEN_SYM_OBJECTS);
+        break;
+    case 'p':
+        __PDDLP_SYM("parallel", PDDLP_TOKEN_SYM_PARALLEL);
         break;
     }
 #pragma GCC diagnostic pop

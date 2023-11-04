@@ -26,7 +26,7 @@
 [26:01] PDDLP_TOKEN_SYM_NEGATIVE_PRECONDITIONS :negative-preconditions
 [27:01] PDDLP_TOKEN_SYM_NUMERIC_FLUENTS :numeric-fluents
 [28:01] PDDLP_TOKEN_SYM_OBJECTS :objects
-[29:01] PDDLP_TOKEN_ERROR :parallel
+[29:01] PDDLP_TOKEN_SYM_PARALLEL :parallel
 [30:01] PDDLP_TOKEN_ERROR :parameters
 [31:01] PDDLP_TOKEN_ERROR :precondition
 [32:01] PDDLP_TOKEN_ERROR :predicates
@@ -40,4 +40,4 @@
 [40:01] PDDLP_TOKEN_ERROR :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 13
+error count: 12
