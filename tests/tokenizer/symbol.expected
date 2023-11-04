@@ -16,7 +16,7 @@
 [16:01] PDDLP_TOKEN_SYM_DURATIVE_ACTIONS :durative-actions
 [17:01] PDDLP_TOKEN_SYM_EFFECT :effect
 [18:01] PDDLP_TOKEN_SYM_EQUALITY :equality
-[19:01] PDDLP_TOKEN_ERROR :existential-preconditions
+[19:01] PDDLP_TOKEN_SYM_EXISTENTIAL_PRECONDITIONS :existential-preconditions
 [20:01] PDDLP_TOKEN_ERROR :fluents
 [21:01] PDDLP_TOKEN_ERROR :functions
 [22:01] PDDLP_TOKEN_ERROR :goal
@@ -40,4 +40,4 @@
 [40:01] PDDLP_TOKEN_ERROR :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 23
+error count: 22
