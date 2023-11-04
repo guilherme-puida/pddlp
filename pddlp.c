@@ -110,6 +110,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_FLUENTS] = "PDDLP_TOKEN_SYM_FLUENTS",
     [PDDLP_TOKEN_SYM_FUNCTIONS] = "PDDLP_TOKEN_SYM_FUNCTIONS",
     [PDDLP_TOKEN_SYM_GOAL] = "PDDLP_TOKEN_SYM_GOAL",
+    [PDDLP_TOKEN_SYM_GOAL_UTILITIES] = "PDDLP_TOKEN_SYM_GOAL_UTILITIES",
     [PDDLP_TOKEN_SYM_INIT] = "PDDLP_TOKEN_SYM_INIT",
     [PDDLP_TOKEN_SYM_LENGTH] = "PDDLP_TOKEN_SYM_LENGHT",
     [PDDLP_TOKEN_SYM_METRIC] = "PDDLP_TOKEN_SYM_METRIC",
@@ -437,6 +438,7 @@ symbol_type(struct pddlp_tokenizer *t)
         break;
     case 'g':
         __PDDLP_SYM("goal", PDDLP_TOKEN_SYM_GOAL);
+        __PDDLP_SYM("goal-utilities", PDDLP_TOKEN_SYM_GOAL_UTILITIES);
         break;
     case 'i':
         __PDDLP_SYM("init", PDDLP_TOKEN_SYM_INIT);

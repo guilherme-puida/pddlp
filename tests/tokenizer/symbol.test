@@ -20,6 +20,7 @@
 :fluents
 :functions
 :goal
+:goal-utilities ; woodworking-net-benefit-optimal-numeric-fluents
 :init
 :length
 :metric
