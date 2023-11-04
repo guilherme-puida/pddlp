@@ -108,6 +108,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_FLUENTS] = "PDDLP_TOKEN_SYM_FLUENTS",
     [PDDLP_TOKEN_SYM_FUNCTIONS] = "PDDLP_TOKEN_SYM_FUNCTIONS",
     [PDDLP_TOKEN_SYM_GOAL] = "PDDLP_TOKEN_SYM_GOAL",
+    [PDDLP_TOKEN_SYM_INIT] = "PDDLP_TOKEN_SYM_INIT",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -416,6 +417,9 @@ symbol_type(struct pddlp_tokenizer *t)
         break;
     case 'g':
         __PDDLP_SYM("goal", PDDLP_TOKEN_SYM_GOAL);
+        break;
+    case 'i':
+        __PDDLP_SYM("init", PDDLP_TOKEN_SYM_INIT);
         break;
     }
 #pragma GCC diagnostic pop
