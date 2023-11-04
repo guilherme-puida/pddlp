@@ -23,7 +23,7 @@
 [23:01] PDDLP_TOKEN_SYM_INIT :init
 [24:01] PDDLP_TOKEN_SYM_LENGHT :length
 [25:01] PDDLP_TOKEN_SYM_METRIC :metric
-[26:01] PDDLP_TOKEN_ERROR :negative-preconditions
+[26:01] PDDLP_TOKEN_SYM_NEGATIVE_PRECONDITIONS :negative-preconditions
 [27:01] PDDLP_TOKEN_ERROR :numeric-fluents
 [28:01] PDDLP_TOKEN_ERROR :objects
 [29:01] PDDLP_TOKEN_ERROR :parallel
@@ -40,4 +40,4 @@
 [40:01] PDDLP_TOKEN_ERROR :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 16
+error count: 15
