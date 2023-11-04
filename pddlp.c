@@ -323,33 +323,33 @@ name_type(struct pddlp_tokenizer *t)
 
 #undef __PDDLP_NAME
 
-#define __PDDLP_SYM(symbol, token) \
-{ \
-    int symbol_length = sizeof(symbol) - 1; \
-    if (token_length == symbol_length && start[1] == symbol[1] && \
-        (symbol_length <= 2 || start[2] == symbol[2]) && \
-        (symbol_length <= 3 || start[3] == symbol[3]) && \
-        (symbol_length <= 4 || start[4] == symbol[4]) && \
-        (symbol_length <= 5 || start[5] == symbol[5]) && \
-        (symbol_length <= 6 || start[6] == symbol[6]) && \
-        (symbol_length <= 7 || start[7] == symbol[7]) && \
-        (symbol_length <= 8 || start[8] == symbol[8]) && \
-        (symbol_length <= 9 || start[9] == symbol[9]) && \
-        (symbol_length <= 10 || start[10] == symbol[10]) && \
-        (symbol_length <= 11 || start[11] == symbol[11]) && \
-        (symbol_length <= 12 || start[12] == symbol[12]) && \
-        (symbol_length <= 13 || start[13] == symbol[13]) && \
-        (symbol_length <= 14 || start[14] == symbol[14]) && \
-        (symbol_length <= 15 || start[15] == symbol[15]) && \
-        (symbol_length <= 16 || start[16] == symbol[16]) && \
-        (symbol_length <= 17 || start[17] == symbol[17]) && \
-        (symbol_length <= 18 || start[18] == symbol[18]) && \
-        (symbol_length <= 19 || start[19] == symbol[19]) && \
-        (symbol_length <= 20 || start[20] == symbol[20]) && \
-        (symbol_length <= 21 || start[21] == symbol[21]) && \
-        (symbol_length <= 22 || start[22] == symbol[22]) && \
-        (symbol_length <= 23 || start[23] == symbol[23]) && \
-        (symbol_length <= 24 || start[24] == symbol[24]) && \
+#define __PDDLP_SYM(symbol, token)                                      \
+{                                                                       \
+    int symbol_length = sizeof(symbol) - 1;                             \
+    if (token_length == symbol_length && start[1] == symbol[1] &&       \
+        (symbol_length <= 2 || start[2] == symbol[2]) &&                \
+        (symbol_length <= 3 || start[3] == symbol[3]) &&                \
+        (symbol_length <= 4 || start[4] == symbol[4]) &&                \
+        (symbol_length <= 5 || start[5] == symbol[5]) &&                \
+        (symbol_length <= 6 || start[6] == symbol[6]) &&                \
+        (symbol_length <= 7 || start[7] == symbol[7]) &&                \
+        (symbol_length <= 8 || start[8] == symbol[8]) &&                \
+        (symbol_length <= 9 || start[9] == symbol[9]) &&                \
+        (symbol_length <= 10 || start[10] == symbol[10]) &&             \
+        (symbol_length <= 11 || start[11] == symbol[11]) &&             \
+        (symbol_length <= 12 || start[12] == symbol[12]) &&             \
+        (symbol_length <= 13 || start[13] == symbol[13]) &&             \
+        (symbol_length <= 14 || start[14] == symbol[14]) &&             \
+        (symbol_length <= 15 || start[15] == symbol[15]) &&             \
+        (symbol_length <= 16 || start[16] == symbol[16]) &&             \
+        (symbol_length <= 17 || start[17] == symbol[17]) &&             \
+        (symbol_length <= 18 || start[18] == symbol[18]) &&             \
+        (symbol_length <= 19 || start[19] == symbol[19]) &&             \
+        (symbol_length <= 20 || start[20] == symbol[20]) &&             \
+        (symbol_length <= 21 || start[21] == symbol[21]) &&             \
+        (symbol_length <= 22 || start[22] == symbol[22]) &&             \
+        (symbol_length <= 23 || start[23] == symbol[23]) &&             \
+        (symbol_length <= 24 || start[24] == symbol[24]) &&             \
         (symbol_length <= 25 || start[25] == symbol[25])) return token; \
 }
 
