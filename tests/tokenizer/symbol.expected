@@ -6,7 +6,7 @@
 [06:01] PDDLP_TOKEN_SYM_CONSTANTS :constants
 [07:01] PDDLP_TOKEN_SYM_CONSTRAINTS :constraints
 [08:01] PDDLP_TOKEN_SYM_CONTINUOUS_EFFECTS :continuous-effects
-[09:01] PDDLP_TOKEN_ERROR :derived
+[09:01] PDDLP_TOKEN_SYM_DERIVED :derived
 [10:01] PDDLP_TOKEN_ERROR :derived-predicates
 [11:01] PDDLP_TOKEN_ERROR :disjunctive-preconditions
 [12:01] PDDLP_TOKEN_ERROR :domain
@@ -41,4 +41,4 @@
 [41:01] PDDLP_TOKEN_ERROR :typing
 [42:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 34
+error count: 33
