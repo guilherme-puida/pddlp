@@ -95,6 +95,7 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_SYM_CONSTRAINTS] = "PDDLP_TOKEN_SYM_CONSTRAINTS",
     [PDDLP_TOKEN_SYM_CONTINUOUS_EFFECTS] = "PDDLP_TOKEN_SYM_CONTINUOUS_EFFECTS",
     [PDDLP_TOKEN_SYM_DERIVED] = "PDDLP_TOKEN_SYM_DERIVED",
+    [PDDLP_TOKEN_SYM_DERIVED_PREDICATES] = "PDDLP_TOKEN_SYM_DERIVED_PREDICATES",
 
     [PDDLP_TOKEN_EOF] = "PDDLP_TOKEN_EOF",
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
@@ -384,6 +385,7 @@ symbol_type(struct pddlp_tokenizer *t)
         break;
     case 'd':
         __PDDLP_SYM("derived", PDDLP_TOKEN_SYM_DERIVED);
+        __PDDLP_SYM("derived-predicates", PDDLP_TOKEN_SYM_DERIVED_PREDICATES);
         break;
     }
 #pragma GCC diagnostic pop
