@@ -37,7 +37,7 @@
 [37:01] PDDLP_TOKEN_SYM_STRIPS :strips
 [38:01] PDDLP_TOKEN_SYM_TIMED_INITIAL_LITERALS :timed-initial-literals
 [39:01] PDDLP_TOKEN_SYM_TYPES :types
-[40:01] PDDLP_TOKEN_ERROR :typing
+[40:01] PDDLP_TOKEN_SYM_TYPING :typing
 [41:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 2
+error count: 1
