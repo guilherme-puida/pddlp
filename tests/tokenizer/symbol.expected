@@ -8,7 +8,7 @@
 [08:01] PDDLP_TOKEN_SYM_CONTINUOUS_EFFECTS :continuous-effects
 [09:01] PDDLP_TOKEN_SYM_DERIVED :derived
 [10:01] PDDLP_TOKEN_SYM_DERIVED_PREDICATES :derived-predicates
-[11:01] PDDLP_TOKEN_ERROR :disjunctive-preconditions
+[11:01] PDDLP_TOKEN_SYM_DISJUNCTIVE_PRECONDITIONS :disjunctive-preconditions
 [12:01] PDDLP_TOKEN_ERROR :domain
 [13:01] PDDLP_TOKEN_ERROR :duration
 [14:01] PDDLP_TOKEN_ERROR :duration-inequalities
@@ -41,4 +41,4 @@
 [41:01] PDDLP_TOKEN_ERROR :typing
 [42:01] PDDLP_TOKEN_ERROR :universal-preconditions
 EOF
-error count: 32
+error count: 31
