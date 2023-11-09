@@ -30,6 +30,7 @@
  */
 #include "pddlp.h"
 
+#include <stdbool.h>
 #include <string.h>
 
 const char *pddlp_token_type_names[] = {
@@ -137,25 +138,25 @@ const char *pddlp_token_type_names[] = {
     [PDDLP_TOKEN_ERROR] = "PDDLP_TOKEN_ERROR",
 };
 
-static int
+static bool
 tok_is_digit(char c)
 {
     return '0' <= c && c <= '9';
 }
 
-static int
+static bool
 tok_is_letter(char c)
 {
     return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
 }
 
-static int
+static bool
 tok_is_any_char(char c)
 {
     return tok_is_digit(c) || tok_is_letter(c) || c == '-' || c == '_';
 }
 
-static int
+static bool
 tok_is_at_end(struct pddlp_tokenizer *t)
 {
     return *t->current == 0;
@@ -181,14 +182,14 @@ tok_peek_next(struct pddlp_tokenizer *t)
     return tok_is_at_end(t) ? 0 : t->current[1];
 }
 
-static int
+static bool
 tok_match(struct pddlp_tokenizer *t, char expected)
 {
     if (tok_is_at_end(t) || tok_peek(t) != expected)
-        return 0;
+        return false;
 
     tok_advance(t);
-    return 1;
+    return true;
 }
 
 static void
