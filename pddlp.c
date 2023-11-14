@@ -253,7 +253,7 @@ tok_error_token(struct pddlp_tokenizer *t, const char *message)
 }
 
 #define __PDDLP_NAME(name, token)                                       \
-{                                                                       \
+do {                                                                    \
     int name_length = sizeof(name) - 1;                                 \
     if (token_length == name_length && t->start[1] == name[1] &&        \
         (name_length <= 2 || t->start[2] == name[2]) &&                 \
@@ -270,7 +270,7 @@ tok_error_token(struct pddlp_tokenizer *t, const char *message)
         (name_length <= 13 || t->start[13] == name[13]) &&              \
         (name_length <= 14 || t->start[14] == name[14]) &&              \
         (name_length <= 15 || t->start[15] == name[15])) return token;  \
-}
+} while (0)
 
 static enum pddlp_token_type
 tok_name_type(struct pddlp_tokenizer *t)
@@ -362,7 +362,7 @@ tok_name_type(struct pddlp_tokenizer *t)
 #undef __PDDLP_NAME
 
 #define __PDDLP_SYM(symbol, token)                                      \
-{                                                                       \
+do {                                                                    \
     int symbol_length = sizeof(symbol) - 1;                             \
     if (token_length == symbol_length && start[1] == symbol[1] &&       \
         (symbol_length <= 2 || start[2] == symbol[2]) &&                \
@@ -389,7 +389,7 @@ tok_name_type(struct pddlp_tokenizer *t)
         (symbol_length <= 23 || start[23] == symbol[23]) &&             \
         (symbol_length <= 24 || start[24] == symbol[24]) &&             \
         (symbol_length <= 25 || start[25] == symbol[25])) return token; \
-}
+} while (0)
 
 static enum pddlp_token_type
 tok_symbol_type(struct pddlp_tokenizer *t)
