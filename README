@@ -31,6 +31,8 @@ Only the tokenizer is currently implemented, and it is case-sensitive. Because
 of this case-sensitivity, some domains/problems from IPC competitions are not
 tokenized correctly.
 
+This case-sensitivity limitation is likely to disappear in the future.
+
 == References ==
 
 "Daniel L, Kovacs. BNF definition of PDDLP 3.1. 2011"
