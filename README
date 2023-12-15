@@ -7,6 +7,11 @@ cleanly under any POSIX-compatible system.
 The entire implementation is contained in pddlp.c and pddlp.h. The other files
 in this repository are just used for testing and building.
 
+Ideally, the library should be allocation-free. This makes the parser harder to
+implement and use, but it shouldn't be a big problem. If this turns out to be
+infeasible, I'll try to design an API that allocates very infrequently,
+preferably with a user-supplied allocator.
+
 The code is licensed under the BSD 3-Clause License. Please see LICENSE for the
 entire text.
 
