@@ -540,7 +540,7 @@ tok_tokenize_symbol(struct pddlp_tokenizer *t)
 static struct pddlp_token
 tok_tokenize_variable(struct pddlp_tokenizer *t)
 {
-    int should_error = !tok_is_letter(tok_peek(t));
+    bool should_error = !tok_is_letter(tok_peek(t));
 
     tok_advance(t);
 
