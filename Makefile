@@ -2,7 +2,7 @@ CFLAGS = -Wall -Wextra -pedantic -std=c99 -O2
 
 .PHONY: all clean test
 
-all: build/pddlp-tokenize
+all: build/pddlp-tokenize build/pddlp-count-tokens
 
 clean:
 	rm -rf build
