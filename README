@@ -17,6 +17,27 @@ entire text.
 
 This project is in the initial stages of development.
 
+== Tokenizer ==
+
+The tokenizer is already quite fast, being able to chug through 6605750 tokens
+in ~70ms. This is not a comprehensive benchmark, but it at least shows the
+overall performance of the tokenizer.
+
+  $ ./build/pddlp-count-tokens pipesworld-propositional-strips-domain-44.pddl
+  tokens: 6605750
+  errors: 0
+
+  $ hyperfine './build/pddlp-count-tokens pipesworld-propositional-strips-domain-44.pddl'
+  Benchmark 1: ./build/pddlp-count-tokens pipesworld-propositional-strips-domain-44.pddl
+    Time (mean ± σ):      68.2 ms ±   1.4 ms    [User: 60.1 ms, System: 8.0 ms]
+    Range (min … max):    67.4 ms …  75.7 ms    42 runs
+
+The "benchmark" input comes from the IPC 2006 competition. It is the current
+biggest domain present in the potassco/pddl-instances github repository.
+You can download it here:
+
+  https://github.com/potassco/pddl-instances/blob/master/ipc-2006/domains/pipesworld-propositional-strips/domains/domain-44.pddl
+
 == Testing ==
 
 There is a basic test-suite implemented. To run the tests:
