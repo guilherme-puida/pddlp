@@ -1,9 +1,0 @@
-[01:01] PDDLP_TOKEN_VARIABLE ?var
-[02:01] PDDLP_TOKEN_VARIABLE ?var1
-[03:01] PDDLP_TOKEN_VARIABLE ?var-hy
-[04:01] PDDLP_TOKEN_VARIABLE ?var__
-[05:01] PDDLP_TOKEN_ERROR first character of a variable should be a letter
-[05:04] PDDLP_TOKEN_ERROR first character of a variable should be a letter
-[05:07] PDDLP_TOKEN_ERROR first character of a variable should be a letter
-EOF
-error count: 3

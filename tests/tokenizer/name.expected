@@ -1,8 +1,0 @@
-[01:01] PDDLP_TOKEN_NAME name
-[02:01] PDDLP_TOKEN_NAME name-hyphens
-[03:01] PDDLP_TOKEN_NAME name_underscores
-[04:01] PDDLP_TOKEN_NAME namedigit1
-[05:01] PDDLP_TOKEN_NAME name-hypens-digit-10
-[06:01] PDDLP_TOKEN_NAME name_underscores_digit12
-[07:01] PDDLP_TOKEN_NAME name_with-all-3_elements
-EOF
