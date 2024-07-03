@@ -1,0 +1,8 @@
+[wrap-git]
+url = https://github.com/Snaipe/Criterion.git
+revision = v2.4.2
+depth = 1
+clone-recursive = true
+
+[provide]
+criterion = criterion
