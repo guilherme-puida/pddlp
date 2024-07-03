@@ -19,7 +19,10 @@ pddlp_dep = declare_dependency(
 )
 
 subdir('bin')
-subdir('tests')
+
+if get_option('with_tests')
+  subdir('tests')
+endif
 
 install_headers('pddlp/pddlp.h')
 
