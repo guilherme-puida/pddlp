@@ -38,13 +38,31 @@ You can download it here:
 
   https://github.com/potassco/pddl-instances/blob/master/ipc-2006/domains/pipesworld-propositional-strips/domains/domain-44.pddl
 
+== Building ==
+
+pddlp uses meson as a build system. Use it as you normally would:
+
+  meson setup build
+  meson compile -C build
+
 == Testing ==
 
 There is a basic test-suite implemented. To run the tests:
 
   make test
 
-Running tests require that you have a recent-ish version of tcl installed.
+Running tests require the criterion library to be installed. On debian systems,
+you can install it with
+
+  apt install libcriterion-dev
+
+If you don't have criterion installed, meson will download it for you when you
+try to setup the project.
+
+If you want to skip building tests, set the `with_tests` option to false when
+configuring meson.
+
+  meson setup -C build -Dwith_tests=false
 
 == Limitations ==
 
