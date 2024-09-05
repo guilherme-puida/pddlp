@@ -1,0 +1,31 @@
+name: tests
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout
+
+      - run: |
+          sudo apt-get update
+          sudo apt-get install meson libcriterion-dev
+        name: install dependencies
+
+      - run: meson setup debug --buildtype=debug
+        name: setup debug
+
+      - run: meson test -C debug --verbose
+        name: test debug
+
+      - run: meson setup release --buildtype=release
+        name: setup release
+
+      - run: meson test -C release --verbose
+        name: test release
+
