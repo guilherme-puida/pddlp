@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024 Guilherme Puida Moreira <guilherme@puida.xyz>
+# SPDX-License-Identifier: BSD-3-Clause
+
 project('pddlp', 'c',
   version         : '0.1',
   license         : ['BSD-3-Clause'],

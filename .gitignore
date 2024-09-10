@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2023 Guilherme Puida Moreira <guilherme@puida.xyz>
+# SPDX-License-Identifier: BSD-3-Clause
+
 build
 compile_commands.json
 .cache

@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2024 Guilherme Puida Moreira <guilherme@puida.xyz>
+// SPDX-License-Identifier: BSD-3-Clause
+
 #include "pddlp.h"
 
 #include <criterion/criterion.h>

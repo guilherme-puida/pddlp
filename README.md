@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2024 Guilherme Puida Moreira <guilherme@puida.xyz>
+SPDX-License-Identifier: BSD-3-Clause
+-->
+
 # PDDLP
 
 PDDLP aims to be a simple, but fast and correct, PDDL tokenizer and parser. It
