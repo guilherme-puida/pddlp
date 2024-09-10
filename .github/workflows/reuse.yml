@@ -1,0 +1,22 @@
+# SPDX-FileCopyrightText: 2024 Guilherme Puida Moreira <guilherme@puida.xyz>
+# SPDX-License-Identifier: BSD-3-Clause
+
+name: REUSE Compliance
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    name: check
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        name: checkout
+
+      - uses: fsfe/reuse-action@v4
+        name: REUSE Compliance Check
