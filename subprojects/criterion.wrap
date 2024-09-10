@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2024 Guilherme Puida Moreira <guilherme@puida.xyz>
+# SPDX-License-Identifier: BSD-3-Clause
+
 [wrap-git]
 url = https://github.com/Snaipe/Criterion.git
 revision = v2.4.2

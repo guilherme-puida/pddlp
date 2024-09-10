@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2024 Guilherme Puida Moreira <guilherme@puida.xyz>
+# SPDX-License-Identifier: BSD-3-Clause
+
+version = 1
+SPDX-PackageName = "pddlp"
+SPDX-PackageDownloadLocation = "https://github.com/guilherme-puida/pddlp"
+
+[[annotations]]
+path = [
+  ".mailmap",
+]
+SPDX-FileCopyrightText = "Guilherme Puida Moreira <guilherme@puida.xyz>"
+SPDX-License-Identifier = "BSD-3-Clause"
+precedence = "closest"
