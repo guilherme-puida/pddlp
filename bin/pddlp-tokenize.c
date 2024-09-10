@@ -91,5 +91,6 @@ main(int argc, char **argv)
     if (error_count)
         printf("error count: %d\n", error_count);
 
+    free(source);
     return 0;
 }
