@@ -92,6 +92,6 @@ main(int argc, char **argv)
 
     struct count_tokens_result result = count_tokens(source);
     printf("tokens: %d\nerrors: %d\n", result.token_count, result.error_count);
-
+    free(source);
     return 0;
 }
